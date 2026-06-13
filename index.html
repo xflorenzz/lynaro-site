@@ -3,130 +3,177 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Lynaro</title>
 
 <style>
-body {
-margin: 0;
-font-family: Arial;
-background: #0b0b0b;
-color: white;
+
+*{
+box-sizing:border-box;
 }
 
-.hero {
-padding: 100px 10%;
-text-align: center;
-background: radial-gradient(circle at top, #222, #0b0b0b);
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:#050505;
+color:white;
 }
 
-.hero h1 {
-font-size: 60px;
-margin-bottom: 10px;
+.hero{
+min-height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:40px;
+background:linear-gradient(180deg,#111,#050505);
 }
 
-.hero p {
-color: #aaa;
-font-size: 20px;
+.hero h1{
+font-size:70px;
+margin:0;
+letter-spacing:5px;
 }
 
-.btn {
-display: inline-block;
-margin-top: 25px;
-padding: 14px 28px;
-background: white;
-color: black;
-border-radius: 30px;
-text-decoration: none;
+.hero p{
+font-size:22px;
+color:#aaa;
 }
 
-.section {
-padding: 80px 10%;
+.btn{
+margin-top:20px;
+padding:15px 35px;
+border-radius:40px;
+background:white;
+color:black;
+text-decoration:none;
 }
 
-.title {
-font-size: 36px;
-margin-bottom: 40px;
+
+.section{
+padding:60px 8%;
 }
 
-.grid {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-gap: 20px;
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
 }
 
-.card {
-background: #151515;
-padding: 20px;
-border-radius: 20px;
-border: 1px solid #222;
-text-align: center;
+
+.card{
+background:#111;
+border-radius:25px;
+padding:20px;
+text-align:center;
+border:1px solid #222;
 }
 
-.card img {
-width: 100%;
-border-radius: 15px;
-margin-bottom: 10px;
+
+.card img{
+width:100%;
+height:250px;
+object-fit:contain;
+border-radius:20px;
 }
 
-footer {
-text-align: center;
-padding: 40px;
-color: #777;
+
+h2{
+font-size:38px;
 }
+
+
+h3{
+font-size:24px;
+}
+
+
+footer{
+padding:40px;
+text-align:center;
+color:#666;
+}
+
 </style>
 
 </head>
 
+
 <body>
 
-<div class="hero">
-<h1>Lynaro</h1>
-<p>Беспроводные наушники нового поколения</p>
-<a class="btn" href="#models">Смотреть модели</a>
-<a class="btn" href="https://t.me/yourname">Telegram</a>
-</div>
 
-<div class="section" id="models">
-<div class="title">Линейка</div>
+<section class="hero">
+
+<h1>LYNARO</h1>
+
+<p>Беспроводные наушники нового поколения</p>
+
+<a class="btn" href="https://t.me/yourname">
+Telegram
+</a>
+
+</section>
+
+
+
+<section class="section">
+
+<h2>Коллекция</h2>
+
 
 <div class="grid">
 
+
 <div class="card">
-<img src="images/slim.jpg">
+<img src="slim.jpg">
 <h3>Lynaro Slim</h3>
 </div>
+
 
 <div class="card">
 <img src="seriesx.jpg">
 <h3>Lynaro Series X</h3>
 </div>
 
+
 <div class="card">
 <img src="seriesxs.jpg">
 <h3>Lynaro Series XS</h3>
 </div>
+
 
 <div class="card">
 <img src="clips.jpg">
 <h3>Lynaro Clips</h3>
 </div>
 
+
 <div class="card">
 <img src="clipsfly.jpg">
 <h3>Lynaro Clips Fly</h3>
 </div>
+
 
 <div class="card">
 <img src="vip.jpg">
 <h3>Lynaro VIP</h3>
 </div>
 
-</div>
+
 </div>
 
+</section>
+
+
+
 <footer>
+
 © Lynaro 2026
+
 </footer>
+
 
 </body>
 </html>

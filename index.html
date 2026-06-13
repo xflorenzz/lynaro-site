@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,87 +16,113 @@ box-sizing:border-box;
 
 body{
 margin:0;
-font-family:Arial, sans-serif;
-background:#050505;
+font-family:Arial,sans-serif;
+background:
+radial-gradient(circle at top,#3b2a1a,#080808 45%);
 color:white;
 }
 
+
 .hero{
-min-height:90vh;
+
+min-height:80vh;
 display:flex;
 flex-direction:column;
-justify-content:center;
 align-items:center;
+justify-content:center;
 text-align:center;
-padding:40px;
-background:linear-gradient(180deg,#111,#050505);
+padding:30px;
+
 }
 
-.hero h1{
+
+.logo{
 font-size:70px;
-margin:0;
-letter-spacing:5px;
+letter-spacing:8px;
+font-weight:bold;
 }
+
 
 .hero p{
+
 font-size:22px;
-color:#aaa;
+color:#cfcfcf;
+
 }
 
-.btn{
-margin-top:20px;
+
+.telegram{
+
+margin-top:25px;
 padding:15px 35px;
 border-radius:40px;
-background:white;
-color:black;
+background:#d8a85b;
+color:#111;
 text-decoration:none;
+font-weight:bold;
+
 }
 
 
-.section{
+.catalog{
+
 padding:60px 8%;
+
 }
 
 
 .grid{
+
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 gap:25px;
+
 }
 
 
 .card{
-background:#111;
+
+background:#151515;
 border-radius:25px;
 padding:20px;
 text-align:center;
-border:1px solid #222;
+transition:.3s;
+border:1px solid #333;
+
+}
+
+
+.card:hover{
+
+transform:translateY(-8px);
+border-color:#d8a85b;
+
 }
 
 
 .card img{
+
 width:100%;
-height:250px;
+height:230px;
 object-fit:contain;
-border-radius:20px;
+
+}
+
+
+.card a{
+
+text-decoration:none;
+color:white;
+
 }
 
 
 h2{
-font-size:38px;
+
+font-size:40px;
+
 }
 
-
-h3{
-font-size:24px;
-}
-
-
-footer{
-padding:40px;
-text-align:center;
-color:#666;
-}
 
 </style>
 
@@ -106,19 +134,20 @@ color:#666;
 
 <section class="hero">
 
-<h1>LYNARO</h1>
+<div class="logo">LYNARO</div>
 
-<p>Беспроводные наушники нового поколения</p>
+<p>Технологии, которые хочется носить</p>
 
-<a class="btn" href="https://t.me/yourname">
-Telegram
+<a class="telegram" href="https://t.me/yourname">
+Связаться в Telegram
 </a>
 
 </section>
 
 
 
-<section class="section">
+<section class="catalog">
+
 
 <h2>Коллекция</h2>
 
@@ -127,38 +156,50 @@ Telegram
 
 
 <div class="card">
+<a href="slim.html">
 <img src="slim.jpg">
 <h3>Lynaro Slim</h3>
+</a>
 </div>
 
 
 <div class="card">
+<a href="seriesx.html">
 <img src="seriesx.jpg">
 <h3>Lynaro Series X</h3>
+</a>
 </div>
 
 
 <div class="card">
+<a href="seriesxs.html">
 <img src="seriesxs.jpg">
 <h3>Lynaro Series XS</h3>
+</a>
 </div>
 
 
 <div class="card">
+<a href="clips.html">
 <img src="clips.jpg">
 <h3>Lynaro Clips</h3>
+</a>
 </div>
 
 
 <div class="card">
+<a href="clipsfly.html">
 <img src="clipsfly.jpg">
 <h3>Lynaro Clips Fly</h3>
+</a>
 </div>
 
 
 <div class="card">
+<a href="vip.html">
 <img src="vip.jpg">
 <h3>Lynaro VIP</h3>
+</a>
 </div>
 
 
@@ -167,13 +208,6 @@ Telegram
 </section>
 
 
-
-<footer>
-
-© Lynaro 2026
-
-</footer>
-
-
 </body>
+
 </html>

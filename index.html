@@ -35,7 +35,7 @@ text-align:center;
 .logo{
 font-size:70px;
 letter-spacing:8px;
-color:#d4af37;
+color:white;
 }
 
 
@@ -117,7 +117,7 @@ border-radius:20px;
 
 .card h2{
 
-color:#d4af37;
+color:#white;
 
 }
 
@@ -126,6 +126,16 @@ color:#d4af37;
 
 font-size:24px;
 font-weight:bold;
+
+background:linear-gradient(
+90deg,
+#d4af37,
+#fff1a8,
+#b8860b
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 
 }
 
@@ -242,6 +252,32 @@ margin:10px;
 
 }
 
+.more-btn{
+
+margin-top:15px;
+
+padding:12px 25px;
+
+border-radius:20px;
+
+border:1px solid #d4af37;
+
+background:transparent;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+
+.more-btn:hover{
+
+background:#d4af37;
+
+color:black;
+
+}
 
 
 </style>
@@ -293,6 +329,10 @@ onclick="document.getElementById('products').scrollIntoView()">
 
 <div class="price">300₽</div>
 
+  <button class="more-btn">
+Подробнее
+</button>
+
 </div>
 
 
@@ -304,6 +344,10 @@ onclick="document.getElementById('products').scrollIntoView()">
 <h2>Series X</h2>
 
 <div class="price">700₽</div>
+
+  <button class="more-btn">
+Подробнее
+</button>
 
 </div>
 
@@ -318,6 +362,10 @@ onclick="document.getElementById('products').scrollIntoView()">
 
 <div class="price">500₽</div>
 
+  <button class="more-btn">
+Подробнее
+</button>
+
 </div>
 
 
@@ -331,6 +379,10 @@ onclick="document.getElementById('products').scrollIntoView()">
 <h2>Clips</h2>
 
 <div class="price">600₽</div>
+
+  <button class="more-btn">
+Подробнее
+</button>
 
 </div>
 
@@ -347,6 +399,10 @@ onclick="document.getElementById('products').scrollIntoView()">
 
 <div class="price">900₽</div>
 
+  <button class="more-btn">
+Подробнее
+</button>
+
 </div>
 
 
@@ -362,6 +418,10 @@ onclick="document.getElementById('products').scrollIntoView()">
 <h2>VIP</h2>
 
 <div class="price">1200₽</div>
+
+  <button class="more-btn">
+Подробнее
+</button>
 
 </div>
 

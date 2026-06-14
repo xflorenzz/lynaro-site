@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,60 +8,42 @@
 
 <style>
 
-*{
-box-sizing:border-box;
-}
-
+/* ===== BACKGROUND ===== */
 body{
 margin:0;
 font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#0a0a0a,#1a1a1a);
 color:white;
-background:
-linear-gradient(135deg,#050505,#1c1505);
 }
 
-
+/* ===== HEADER ===== */
 header{
-height:70vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
 text-align:center;
+padding:40px 20px;
 }
 
-
-.logo{
-font-size:70px;
-letter-spacing:8px;
+header h1{
 color:white;
+font-size:40px;
+margin:0;
 }
 
-
-.subtitle{
-color:#aaa;
-font-size:20px;
+header p{
+opacity:0.7;
+margin-top:10px;
 }
 
-
-.main-btn{
-
-margin-top:30px;
-padding:16px 40px;
-
-border-radius:30px;
+header button{
+margin-top:20px;
+padding:12px 20px;
+border-radius:20px;
 border:1px solid #d4af37;
-
-background:#d4af37;
-color:black;
-
-font-size:18px;
+background:transparent;
+color:white;
 cursor:pointer;
-
 }
 
-
-
+/* ===== PRODUCTS GRID ===== */
 .products{
 display:grid;
 grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
@@ -70,824 +51,193 @@ gap:25px;
 padding:50px;
 }
 
-
+/* ===== CARD ===== */
 .card{
-background:rgba(255,255,255,.08);
-border:1px solid rgba(212,175,37,.5);
-border-radius:25px;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(212,175,37,0.4);
+border-radius:20px;
 padding:20px;
-cursor:pointer;
-transition:.3s;
-
 display:flex;
 flex-direction:column;
 gap:10px;
-
-overflow:hidden;
+transition:0.3s;
+cursor:pointer;
 }
-
-}
-
-
 
 .card:hover{
-
-transform:translateY(-10px);
-
+transform:translateY(-5px);
 }
 
-
-
+/* IMAGE */
 .card img{
-
 width:100%;
-height:230px;
-
+height:180px;
 object-fit:cover;
-
-border-radius:20px;
-
+border-radius:15px;
 }
 
-
-
-.card h2{
-
-color:#white;
-
-}
-
-
+/* PRICE */
 .price{
-
-font-size:24px;
-font-weight:bold;
-
-background:linear-gradient(
-90deg,
-#d4af37,
-#fff1a8,
-#b8860b
-);
-
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-
-}
-
-
-
-
-.contacts{
-
-margin:40px;
-
-padding:30px;
-
-text-align:center;
-
-background:#111;
-
-border-radius:25px;
-
-border:1px solid #d4af37;
-
-}
-
-
-
-.contacts a{
-
-display:inline-block;
-
-margin:10px;
-
-padding:12px 25px;
-
-background:#d4af37;
-
-color:black;
-
-border-radius:20px;
-
-text-decoration:none;
-
-}
-
-
-
-
-/* POPUP */
-
-
-.popup{
-
-display:none;
-
-position:fixed;
-
-inset:0;
-
-background:rgba(0,0,0,.85);
-
-justify-content:center;
-
-align-items:center;
-
-z-index:10;
-
-}
-
-
-
-.popup-box{
-
-width:350px;
-
-background:#111;
-
-border-radius:30px;
-
-padding:25px;
-
-border:1px solid #d4af37;
-
-text-align:center;
-
-}
-
-
-
-.popup-box img{
-
-width:100%;
-
-border-radius:20px;
-
-}
-
-
-
-.close{
-
 color:#d4af37;
-
-font-size:25px;
-
-cursor:pointer;
-
-text-align:right;
-
-}
-
-
-
-li{
-
-margin:10px;
-
-}
-
-.more-btn{
-  
-border:1px solid #d4af37;
-
-background:transparent;
-
-color:white;
-
-cursor:pointer;
-
-transition:.25s;
-
-border-radius:16px;
-
-}
-
-
-.more-btn:hover{
-
-background:#d4af37;
-
-color:black;
-
-}
-
-  .top-contact{
-
-position:fixed;
-
-top:25px;
-right:25px;
-
-padding:12px 25px;
-
-border-radius:25px;
-
-background:rgba(212,175,37,.15);
-
-border:1px solid #d4af37;
-
-color:white;
-
-cursor:pointer;
-
-backdrop-filter:blur(10px);
-
-z-index:20;
-
-}
-
-
-.top-contact:hover{
-
-background:#d4af37;
-
-color:black;
-
-}
-
-  footer{
-
-text-align:center;
-
-padding:30px;
-
-color:#777;
-
-font-size:14px;
-
-letter-spacing:3px;
-
-}
-
-  html{
-scroll-behavior:smooth;
-}
-
-  .card:before{
-
-content:"";
-
-position:absolute;
-
-top:-50%;
-left:-50%;
-
-width:200%;
-height:200%;
-
-background:linear-gradient(
-120deg,
-transparent,
-rgba(212,175,37,.15),
-transparent
-);
-
-transform:rotate(25deg);
-
-transition:.5s;
-
-}
-
-
-.card:hover:before{
-
-left:100%;
-
-}
-
-  .subtitle{
-
-color:#aaa;
-
-font-size:16px;
-
-letter-spacing:3px;
-
-margin-top:10px;
-
-text-transform:uppercase;
-
-} 
-
-  .badge{
-
-position:absolute;
-
-top:15px;
-right:15px;
-
-background:#d4af37;
-
-color:black;
-
-padding:6px 15px;
-
-border-radius:20px;
-
-font-size:12px;
-
 font-weight:bold;
-
 }
 
+/* BUTTONS */
 .buttons{
 display:flex;
 gap:10px;
-margin-top:12px;
+margin-top:10px;
 }
 
 .buttons button{
 flex:1;
 padding:12px 0;
-border-radius:16px;
+border-radius:15px;
+border:none;
+cursor:pointer;
 }
 
+/* MORE */
+.more-btn{
+border:1px solid #d4af37;
+background:transparent;
+color:white;
+}
 
-.more-btn,
+.more-btn:hover{
+background:#d4af37;
+color:black;
+}
+
+/* BUY */
 .buy-btn{
+background:linear-gradient(135deg,#d4af37,#fff1a8,#b8860b);
+color:black;
+font-weight:bold;
+}
 
-flex:1;
-display:flex;
+/* ===== CONTACTS ===== */
+.contacts{
+text-align:center;
+padding:40px;
+opacity:0.8;
+}
+
+.contacts a{
+color:#d4af37;
+display:block;
+margin:5px 0;
+text-decoration:none;
+}
+
+/* ===== POPUP ===== */
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:none;
 justify-content:center;
 align-items:center;
-padding:12px 0;
-font-size:14px;
-border-status:18px;
-box-sizing:border-box;
-
 }
 
+.popup-content{
+background:#111;
+padding:20px;
+border-radius:20px;
+width:300px;
+text-align:center;
+}
 
-.buy-btn{
+.popup img{
+width:100%;
+border-radius:15px;
+margin-bottom:10px;
+}
 
-background:linear-gradient(
-135deg,
-#d4af37,
-#fff1a8,
-#b8860b
-);
-
-color:#050505;
-
-border:none;
-
-font-weight:bold;
-
-border-radius:16px;
-
-box-shadow:
-0 0 15px rgba(212,175,37,.35);
-
-transition:.25s;
-  
+.close{
+position:absolute;
+top:20px;
+right:20px;
+font-size:30px;
 cursor:pointer;
-
 }
-
-
-.buy-btn:hover{
-
-background:white;
-
-transform:scale(1.05);
-
-box-shadow:
-0 0 25px rgba(212,175,37,.7);
-
-}
-
-.products{
-display:grid !important;
-grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)) !important;
-gap:25px !important;
-padding:50px !important;
-width:100% !important;
-}
-
-.card{
-width:100% !important;
-max-width:none !important;
-}
-
 
 </style>
-
 </head>
-
 
 <body>
 
-
-
 <header>
-
-  <div class="top-contact"
-onclick="document.querySelector('.contacts').scrollIntoView()">
-
-Контакты
-
-</div>
-
-
-<div class="logo">
-LYNARO
-</div>
-
-
-<div class="subtitle">
-Технологии. Стиль. Звук.
-</div>
-
-
-
-<button class="main-btn"
-onclick="document.getElementById('products').scrollIntoView()">
-
-Выбрать модель
-
-</button>
-
-
+<h1>Lynaro</h1>
+<p>Premium Audio Collection</p>
+<button onclick="scrollToProducts()">Выбрать модель</button>
 </header>
-
-
-
-
 
 <div class="products" id="products">
 
-
-
-<div class="card" onclick="openProduct('slim')">
-
+<!-- CARD -->
+<div class="card" onclick="openProduct('Slim')">
 <img src="slim1.jpg">
-
-<h2>Lynaro Slim</h2>
-
+<h2>Slim</h2>
 <div class="price">300₽</div>
 
 <div class="buttons">
-
-  <button class="more-btn">
-Подробнее
-</button>
-
-  <button class="buy-btn">
-Купить
-</button>
-
+<button class="more-btn" onclick="openProduct('Slim')">Подробнее</button>
+<button class="buy-btn">Купить</button>
+</div>
 </div>
 
-
-
-<div class="card" onclick="openProduct('x')">
-  <div class="badge">
-Popular
-</div>
-
-<img src="seriesx1.jpg">
-
+<div class="card" onclick="openProduct('Series X')">
+<img src="slim1.jpg">
 <h2>Series X</h2>
-
 <div class="price">700₽</div>
 
 <div class="buttons">
-
-  <button class="more-btn">
-Подробнее
-</button>
-
-  <button class="buy-btn">
-Купить
-</button>
+<button class="more-btn">Подробнее</button>
+<button class="buy-btn">Купить</button>
+</div>
+</div>
 
 </div>
 
-
-
-
-<div class="card" onclick="openProduct('xs')">
-  <div class="badge">
-New
-</div>
-
-<img src="seriesxs1.jpg">
-
-<h2>Series XS</h2>
-
-<div class="price">500₽</div>
-
-<div class="buttons">
-
-  <button class="more-btn">
-Подробнее
-</button>
-
-  <button class="buy-btn">
-Купить
-</button>
-
-</div>
-
-
-
-
-
-<div class="card" onclick="openProduct('clips')">
-  <div class="badge">
-Hit
-</div>
-
-<img src="clips1.jpg">
-
-<h2>Clips</h2>
-
-<div class="price">600₽</div>
-
-<div class="buttons">
-
-  <button class="more-btn">
-Подробнее
-</button>
-
-  <button class="buy-btn">
-Купить
-</button>
-
-</div>
-
-
-
-
-
-
-<div class="card" onclick="openProduct('fly')">
-  <div class="badge">
-New
-</div>
-
-<img src="clipsfly1.jpg">
-
-<h2>Clips Fly</h2>
-
-<div class="price">900₽</div>
-
-<div class="buttons">
-
-  <button class="more-btn">
-Подробнее
-</button>
-
-  <button class="buy-btn">
-Купить
-</button>
-
-</div>
-
-
-
-
-
-
-
-<div class="card" onclick="openProduct('vip')">
-  <div class="badge">
-Best
-</div>
-
-<img src="vip1.jpg">
-
-<h2>VIP</h2>
-
-<div class="price">1200₽</div>
-
-<div class="buttons">
-
-  <button class="more-btn">
-Подробнее
-</button>
-
-  <button class="buy-btn">
-Купить
-</button>
-
-</div>
-
-
-
-</div>
-
-
-
-
-
-
+<!-- CONTACTS -->
 <div class="contacts">
-
-
-<h2>Контакты</h2>
-
-<p>
-lynaroask@gmail.com
-</p>
-
-
+<h3>Контакты</h3>
+<a href="mailto:lynaroask@gmail.com">lynaroask@gmail.com</a>
 <a href="#">VK</a>
-
 <a href="#">MAX</a>
-
 <a href="#">Telegram</a>
-
-
 </div>
 
-
-
-
-
-
-
-
+<!-- POPUP -->
 <div class="popup" id="popup">
-
-
-<div class="popup-box">
-
-
-<div class="close" onclick="closePopup()">
-✖
+<div class="popup-content">
+<span class="close" onclick="closeProduct()">×</span>
+<img src="slim1.jpg" id="popupImg">
+<h2 id="popupTitle"></h2>
+<p>Характеристики появятся тут</p>
 </div>
-
-
-<img id="pimg">
-
-
-<h2 id="ptitle"></h2>
-
-
-<h2 id="pprice"></h2>
-
-
-<ul id="plist"></ul>
-
-
-
 </div>
-
-</div>
-
-
-
-
-
-
-
 
 <script>
 
-
-const products={
-
-
-slim:{
-name:"Lynaro Slim",
-img:"slim1.jpg",
-price:"300₽",
-info:[
-"Микрофон",
-"USB-C + 3.5MM",
-"Bluetooth 5.3"
-]
-},
-
-
-x:{
-name:"Series X",
-img:"seriesx1.jpg",
-price:"700₽",
-info:[
-"Bluetooth 5.3",
-"Глубокие басы",
-"Чистый звук"
-]
-},
-
-
-xs:{
-name:"Series XS",
-img:"seriesxs1.jpg",
-price:"500₽",
-info:[
-"Компактный дизайн",
-"Стабильное соединение"
-]
-},
-
-
-clips:{
-name:"Clips",
-img:"clips1.jpg",
-price:"600₽",
-info:[
-"Лёгкая конструкция",
-"Удобная фиксация"
-]
-},
-
-
-fly:{
-name:"Clips Fly",
-img:"clipsfly1.jpg",
-price:"900₽",
-info:[
-"Bluetooth 5.3",
-"Стерео звук"
-]
-},
-
-
-vip:{
-name:"VIP",
-img:"vip1.jpg",
-price:"1200₽",
-info:[
-"Премиальный звук",
-"Влагозащита"
-]
-}
-
-
-};
-
-
-
-
-
-function openProduct(id){
-
-
-let p=products[id];
-
-
-document.getElementById("pimg").src=p.img;
-
-document.getElementById("ptitle").innerHTML=p.name;
-
-document.getElementById("pprice").innerHTML=p.price;
-
-
-
-let list=document.getElementById("plist");
-
-list.innerHTML="";
-
-
-p.info.forEach(x=>{
-
-let li=document.createElement("li");
-
-li.innerHTML=x;
-
-list.appendChild(li);
-
-
-});
-
-
-document.getElementById("popup").style.display="flex";
-
-
-}
-
-
-
-function closePopup(){
-
-document.getElementById("popup").style.display="none";
-
-}
-
-
-</script>
-
-  <footer>
-
-Lynaro®
-
-</footer>
-
-<script>
 function openProduct(name){
-console.log("open product:", name);
+document.getElementById('popup').style.display='flex';
+document.getElementById('popupTitle').innerText=name;
 }
 
 function closeProduct(){
-console.log("close product");
+document.getElementById('popup').style.display='none';
 }
-</script>
 
+function scrollToProducts(){
+document.getElementById('products').scrollIntoView({behavior:'smooth'});
+}
+
+</script>
 
 </body>
 </html>

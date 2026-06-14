@@ -469,71 +469,99 @@ Telegram
 
 <script>
 
-
 function show(type){
-
-
-let title=document.getElementById("title");
-let text=document.getElementById("text");
-let info=document.getElementById("info");
-
 
 let data={
 
-
-slim:[
-"Lynaro Slim",
-"Компактные проводные наушники. Лёгкость, удобство и стабильный звук."
-],
-
-
-x:[
-"Lynaro Series X",
-"Bluetooth 5.3, улучшенный звук, автономность и стильный корпус."
-],
-
-
-xs:[
-"Lynaro Series XS",
-"Доступная версия Series X с сохранением фирменного дизайна."
-],
-
-
-clips:[
-"Lynaro Clips",
-"Наушники с клипсой. Комфортная посадка и современный дизайн."
-],
-
-
-fly:[
-"Lynaro Clips Fly",
-"Премиальный дизайн, лёгкость и максимальный комфорт."
-],
-
-
-vip:[
-"Lynaro VIP",
-"Флагманская серия Lynaro. Максимальное качество и премиальные материалы."
+slim:{
+title:"Lynaro Slim",
+img:"images/slim.jpg",
+desc:"Базовая модель для повседневного использования",
+specs:[
+"Проводное подключение",
+"Лёгкий корпус",
+"Чистый звук"
 ]
+},
 
+x:{
+title:"Lynaro Series X",
+img:"images/seriesx.jpg",
+desc:"Баланс мощности и удобства",
+specs:[
+"Bluetooth 5.3",
+"Улучшенные басы",
+"До 20 часов работы"
+]
+},
+
+xs:{
+title:"Lynaro Series XS",
+img:"images/seriesxs.jpg",
+desc:"Доступная версия Series X",
+specs:[
+"Bluetooth 5.3",
+"Компактный размер",
+"Стабильное соединение"
+]
+},
+
+clips:{
+title:"Lynaro Clips",
+img:"images/clips.jpg",
+desc:"Формат клипсы для максимального комфорта",
+specs:[
+"Открытая посадка",
+"Лёгкий вес",
+"Удобство на весь день"
+]
+},
+
+fly:{
+title:"Lynaro Clips Fly",
+img:"images/clipsfly.jpg",
+desc:"Премиальный стиль и комфорт",
+specs:[
+"Улучшенный звук",
+"Лёгкий корпус",
+"Современный дизайн"
+]
+},
+
+vip:{
+title:"Lynaro VIP",
+img:"images/vip.jpg",
+desc:"Флагманская модель Lynaro",
+specs:[
+"Hi-Fi звук",
+"Шумоподавление",
+"Премиальные материалы",
+"Максимальный комфорт"
+]
+}
 
 };
 
+let item=data[type];
 
-title.innerHTML=data[type][0];
+document.getElementById("title").innerHTML=item.title;
 
-text.innerHTML=data[type][1];
+document.getElementById("text").innerHTML=`
+<img src="${item.img}" style="width:250px;border-radius:20px;margin-bottom:20px;">
+<p>${item.desc}</p>
+<ul>
+${item.specs.map(s=>`<li>${s}</li>`).join("")}
+</ul>
+`;
 
-info.classList.add("active");
+document.getElementById("info").classList.add("active");
 
 window.scrollTo({
-top:info.offsetTop,
+top:document.getElementById("info").offsetTop,
 behavior:"smooth"
 });
 
-
 }
-
 
 </script>
 

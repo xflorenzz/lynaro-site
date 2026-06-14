@@ -353,102 +353,31 @@ font-size:22px;
 
 
 <div class="card">
-
-<img src="slim1.jpg">
-
-<h2>Lynaro Slim</h2>
-
-<p>Доступная модель на каждый день</p>
-
-<button onclick="show('slim')">
-Подробнее
-</button>
-
+  <img src="slim1.jpg">
+  <h2>Lynaro Slim</h2>
+  <p>300₽</p>
+  <button onclick="show('slim')">Узнать больше</button>
 </div>
 
-
-
-
 <div class="card">
-
-<img src="seriesx1.jpg">
-
-<h2>Lynaro Series X</h2>
-
-<p>Больше возможностей и мощнее звук</p>
-
-<button onclick="show('x')">
-Подробнее
-</button>
-
+  <img src="seriesx1.jpg">
+  <h2>Lynaro Series X</h2>
+  <p>700₽</p>
+  <button onclick="show('x')">Узнать больше</button>
 </div>
 
-
-
-
 <div class="card">
-
-<img src="seriesxs1.jpg">
-
-<h2>Lynaro Series XS</h2>
-
-<p>Версия Series X в более доступном формате</p>
-
-<button onclick="show('xs')">
-Подробнее
-</button>
-
+  <img src="seriesxs1.jpg">
+  <h2>Lynaro Series XS</h2>
+  <p>500₽</p>
+  <button onclick="show('xs')">Узнать больше</button>
 </div>
 
-
-
-
 <div class="card">
-
-<img src="clips1.jpg">
-
-<h2>Lynaro Clips</h2>
-
-<p>Комфорт нового формата</p>
-
-<button onclick="show('clips')">
-Подробнее
-</button>
-
-</div>
-
-
-
-
-<div class="card">
-
-<img src="clipsfly1.jpg">
-
-<h2>Lynaro Clips Fly</h2>
-
-<p>Стиль и премиальность</p>
-
-<button onclick="show('fly')">
-Подробнее
-</button>
-
-</div>
-
-
-
-
-<div class="card">
-
-<img src="vip1.jpg">
-
-<h2>Lynaro VIP</h2>
-
-<p>Флагманская серия</p>
-
-<button onclick="show('vip')">
-Подробнее
-</button>
-
+  <img src="vip1.jpg">
+  <h2>Lynaro VIP</h2>
+  <p>1.200₽</p>
+  <button onclick="show('vip')">Узнать больше</button>
 </div>
 
 
@@ -538,67 +467,42 @@ const data={
 
 slim:{
 title:"Lynaro Slim",
-img:"slim1.jpg",
-desc:"Базовая модель для повседневного использования.",
+price:"300₽",
 spec:[
-"Проводное подключение",
-"Лёгкий корпус",
-"Чистый звук"
+"Микрофон",
+"USB-C + 3.5mm"
 ]
 },
 
 x:{
 title:"Lynaro Series X",
-img:"seriesx1.jpg",
-desc:"Улучшенный звук и стабильное соединение.",
+price:"700₽",
 spec:[
 "Bluetooth 5.3",
 "Глубокие басы",
-"20 часов работы"
+"Стабильное соединение"
 ]
 },
 
 xs:{
 title:"Lynaro Series XS",
-img:"seriesxs1.jpg",
-desc:"Доступная версия с сохранением качества.",
+price:"500₽",
 spec:[
 "Bluetooth 5.3",
-"Компактный размер",
-"Стабильное соединение"
-]
-},
-
-clips:{
-title:"Lynaro Clips",
-img:"clips1.jpg",
-desc:"Формат клипсы для максимального комфорта.",
-spec:[
-"Лёгкая посадка",
-"Открытый дизайн",
-"Удобно на каждый день"
-]
-},
-
-fly:{
-title:"Lynaro Clips Fly",
-img:"clipsfly1.jpg",
-desc:"Премиальный комфорт и лёгкость.",
-spec:[
-"Улучшенный звук",
-"Эргономика",
-"Стильный корпус"
+"Компактный корпус",
+"Сбалансированный звук"
 ]
 },
 
 vip:{
 title:"Lynaro VIP",
-img:"vip1.jpg",
-desc:"Флагманская модель Lynaro.",
+price:"1.200₽",
 spec:[
 "Hi-Fi звук",
 "Шумоподавление",
-"Премиальные материалы"
+"Водонепроницаемость",
+"Премиальные материалы",
+"Максимальный комфорт"
 ]
 }
 
@@ -606,28 +510,28 @@ spec:[
 
 const item=data[type];
 
-document.getElementById("p-img").src=item.img;
-document.getElementById("p-title").innerText=item.title;
-document.getElementById("p-desc").innerText=item.desc;
+let text = `
+<h2>${item.title}</h2>
+<h3 style="color:#d6a45d;">${item.price}</h3>
 
-const list=document.getElementById("p-spec");
-list.innerHTML="";
-item.spec.forEach(i=>{
-const li=document.createElement("li");
-li.innerText=i;
-list.appendChild(li);
+<ul>
+${item.spec.map(i=>`<li>${i}</li>`).join("")}
+</ul>
+`;
+
+document.getElementById("title").innerHTML = item.title;
+document.getElementById("text").innerHTML = text;
+
+document.getElementById("info").classList.add("active");
+
+window.scrollTo({
+top:document.getElementById("info").offsetTop,
+behavior:"smooth"
 });
 
-document.getElementById("popup").style.display="flex";
-
-}
-
-function closePopup(){
-document.getElementById("popup").style.display="none";
 }
 
 </script>
-
 
 </body>
 </html>

@@ -3,25 +3,38 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>LYNARO</title>
 
 <style>
 
+/* ===== GLOBAL ===== */
 html{
 scroll-behavior:smooth;
 }
 
 body{
 margin:0;
-font-family:Arial, sans-serif;
-
-/* более золотой, но с черным */
+font-family:Arial,sans-serif;
 background:linear-gradient(135deg,#050505,#1a1205,#3a2a08);
 color:white;
 }
 
-/* HEADER */
+/* ===== CONTACT BUTTON ===== */
+.contact-btn{
+position:fixed;
+top:15px;
+right:15px;
+z-index:99999;
+padding:10px 14px;
+border:1px solid #d4af37;
+border-radius:12px;
+background:rgba(0,0,0,.4);
+color:white;
+cursor:pointer;
+backdrop-filter:blur(6px);
+}
+
+/* ===== HEADER ===== */
 header{
 height:70vh;
 display:flex;
@@ -30,21 +43,16 @@ justify-content:center;
 align-items:center;
 text-align:center;
 position:relative;
+z-index:1;
 }
 
 header h1{
 font-size:60px;
 margin:0;
-letter-spacing:4px;
-
 background:linear-gradient(90deg,#fff,#d4af37,#fff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-}
-
-header p{
-opacity:.8;
-margin-top:10px;
+letter-spacing:4px;
 }
 
 header button{
@@ -57,47 +65,23 @@ color:white;
 cursor:pointer;
 }
 
-header button:hover{
-background:#d4af37;
-color:black;
-}
-
-/* CONTACT BUTTON */
-.contact-btn{
-position:fixed;
-top:15px;
-right:15px;
-padding:8px 12px;
-border:1px solid #d4af37;
-border-radius:12px;
-background:transparent;
-color:white;
-cursor:pointer;
-}
-
-/* PRODUCTS */
+/* ===== PRODUCTS ===== */
 .products{
 padding:50px;
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
-margin-top:70px;
 }
 
+/* 💣 FIX 1 — карточки ровные + кнопки всегда снизу */
 .card{
 background:rgba(255,255,255,.06);
 border:1px solid rgba(212,175,55,.4);
 border-radius:20px;
 padding:15px;
-cursor:pointer;
+display:flex;
+flex-direction:column;
 position:relative;
-overflow:hidden;
-transition:.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-box-shadow:0 0 25px rgba(212,175,55,.25);
 }
 
 .card img{
@@ -106,7 +90,6 @@ border-radius:15px;
 }
 
 .card h2{
-color:white;
 margin:10px 0 5px;
 }
 
@@ -129,11 +112,11 @@ border-radius:10px;
 font-size:12px;
 }
 
-/* BUTTONS */
+/* ===== BUTTONS ===== */
 .buttons{
+margin-top:auto; /* 💣 FIX 1 ключ */
 display:flex;
 gap:10px;
-margin-top:12px;
 }
 
 .more-btn{
@@ -156,11 +139,11 @@ flex:1;
 padding:10px;
 border-radius:12px;
 border:none;
-cursor:pointer;
 background:linear-gradient(135deg,#d4af37,#fff1a8,#b8860b);
+cursor:pointer;
 }
 
-/* WHY */
+/* ===== WHY ===== */
 .why{
 text-align:center;
 padding:70px 20px;
@@ -173,61 +156,30 @@ gap:20px;
 margin-top:30px;
 }
 
-.why-grid div{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(212,175,55,.3);
-padding:15px;
-border-radius:15px;
-}
-
-/* CONTACTS */
+/* ===== CONTACTS ===== */
 #contacts{
 text-align:center;
 padding:60px 20px;
 }
 
-#contacts a{
-display:block;
-margin:8px;
-color:white;
-text-decoration:none;
-opacity:.8;
-}
-
-#contacts a:hover{
-opacity:1;
-color:#d4af37;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-padding:20px;
-opacity:.6;
-}
-
-/* POPUP */
+/* ===== POPUP ===== */
 .popup{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
+inset:0;
 background:rgba(0,0,0,.85);
 display:none;
 justify-content:center;
 align-items:center;
-z-index:999;
+z-index:999999;
 }
 
 .popup-content{
+width:320px;
 background:linear-gradient(145deg,#111,#1f1605);
 border:1px solid #d4af37;
 border-radius:20px;
 padding:20px;
-width:320px;
-text-align:left;
-animation:pop .25s ease;
+animation:pop .2s ease;
 }
 
 .popup-content img{
@@ -243,9 +195,9 @@ to{transform:scale(1);opacity:1;}
 
 .close{
 position:absolute;
-right:20px;
 top:15px;
-font-size:28px;
+right:20px;
+font-size:24px;
 cursor:pointer;
 }
 
@@ -254,32 +206,34 @@ cursor:pointer;
 
 <body>
 
-<button class="contact-btn" onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'})">
+<!-- CONTACT BUTTON -->
+<button class="contact-btn"
+onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'})">
 Контакты
 </button>
 
+<!-- HEADER -->
 <header>
 <h1>LYNARO</h1>
-<p>Новый уровень беспроводного звука</p>
-
+<p>Премиальный звук</p>
 <button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
 Выбрать модель
 </button>
 </header>
 
 <!-- PRODUCTS -->
-<section class="products" id="products">
+<section class="products">
 
 <!-- SLIM -->
 <div class="card">
-<img src="slim1.jpg">
+<img src="slim.jpg">
 <div class="badge">Slim</div>
 <h2>Slim</h2>
 <div class="price">300₽</div>
 
 <div class="buttons">
 <button class="more-btn"
-onclick="openProduct('Slim','Легкие и удобные проводные наушники\n- Микрофон\n- Type-C + 3.5MM','slim.jpg')">
+onclick="openProduct('Slim','Легкие проводные\n- Type-C\n- 3.5mm','slim.jpg')">
 Подробнее</button>
 
 <button class="buy-btn"
@@ -290,14 +244,14 @@ onclick="window.open('https://t.me/lynarostore','_blank')">
 
 <!-- SERIES X -->
 <div class="card">
-<img src="seriesx1.jpg">
+<img src="x.jpg">
 <div class="badge">Popular</div>
 <h2>Series X</h2>
 <div class="price">600₽</div>
 
 <div class="buttons">
 <button class="more-btn"
-onclick="openProduct('Series X','Стандартные беспроводные наушники\n- Bluetooth 5.3\n- До 24 часов работы\n- Сенсорное управление\n- Чистый стереозвук\n- Глубокие басы','x.jpg')">
+onclick="openProduct('Series X','Bluetooth 5.3\n24h battery\nTouch control\nDeep bass','x.jpg')">
 Подробнее</button>
 
 <button class="buy-btn"
@@ -308,14 +262,14 @@ onclick="window.open('https://t.me/lynarostore','_blank')">
 
 <!-- SERIES XS -->
 <div class="card">
-<img src="seriesxs1.jpg">
+<img src="xs.jpg">
 <div class="badge">New</div>
 <h2>Series XS</h2>
 <div class="price">800₽</div>
 
 <div class="buttons">
 <button class="more-btn"
-onclick="openProduct('Series XS','Бюджетная версия Series X\n- Bluetooth 5.3\n- До 24 часов\n- Сенсорное управление\n- Чистый звук','xs.jpg')">
+onclick="openProduct('Series XS','Bluetooth 5.3\n24h battery\nClean sound','xs.jpg')">
 Подробнее</button>
 
 <button class="buy-btn"
@@ -326,14 +280,14 @@ onclick="window.open('https://t.me/lynarostore','_blank')">
 
 <!-- CLIPS -->
 <div class="card">
-<img src="clips1.jpg">
+<img src="clips.jpg">
 <div class="badge">Hit</div>
 <h2>Clips</h2>
 <div class="price">900₽</div>
 
 <div class="buttons">
 <button class="more-btn"
-onclick="openProduct('Clips','Модные клипсы\n- Bluetooth 5.3\n- До 28 часов\n- IPX4\n- Комфортная клипса\n- Удобное ношение','clips.jpg')">
+onclick="openProduct('Clips','IPX4\n28h battery\nComfort clip','clips.jpg')">
 Подробнее</button>
 
 <button class="buy-btn"
@@ -344,14 +298,14 @@ onclick="window.open('https://t.me/lynarostore','_blank')">
 
 <!-- CLIPS FLY -->
 <div class="card">
-<img src="clipsfly1.jpg">
+<img src="fly.jpg">
 <div class="badge">New</div>
 <h2>Clips Fly</h2>
 <div class="price">1100₽</div>
 
 <div class="buttons">
 <button class="more-btn"
-onclick="openProduct('Clips Fly','Стильные наушники с дизайном\n- Bluetooth 5.3\n- До 28 часов\n- IPX4\n- Комфортная клипса\n- Бабочка дизайн','fly.jpg')">
+onclick="openProduct('Clips Fly','IPX4\n28h battery\nButterfly design','fly.jpg')">
 Подробнее</button>
 
 <button class="buy-btn"
@@ -362,14 +316,14 @@ onclick="window.open('https://t.me/lynarostore','_blank')">
 
 <!-- VIP -->
 <div class="card">
-<img src="vip1.jpg">
+<img src="vip.jpg">
 <div class="badge">Best</div>
 <h2>VIP</h2>
 <div class="price">1500₽</div>
 
 <div class="buttons">
 <button class="more-btn"
-onclick="openProduct('VIP','Премиум звук\n- Hi-Fi Audio\n- ENC Noise Reduction\n- Bluetooth 5.3\n- До 30 часов\n- IPX5','vip.jpg')">
+onclick="openProduct('VIP','Hi-Fi Audio\nENC Noise Reduction\n30h battery\nIPX5','vip.jpg')">
 Подробнее</button>
 
 <button class="buy-btn"
@@ -383,7 +337,6 @@ onclick="window.open('https://t.me/lynarostore','_blank')">
 <!-- WHY -->
 <section class="why">
 <h2>Почему Lynaro?</h2>
-
 <div class="why-grid">
 <div>Чистый звук</div>
 <div>Быстрое подключение</div>
@@ -402,16 +355,13 @@ onclick="window.open('https://t.me/lynarostore','_blank')">
 <a href="https://t.me/medialynaro" target="_blank">Telegram</a>
 </section>
 
-<footer>
-Lynaro ®
-</footer>
-
 <!-- POPUP -->
 <div class="popup" id="popup" onclick="this.style.display='none'">
 <div class="popup-content">
 <span class="close">×</span>
+<img id="pImg">
 <h2 id="pTitle"></h2>
-<pre id="pDesc" style="white-space:pre-wrap;color:white;"></pre>
+<pre id="pDesc" style="white-space:pre-wrap"></pre>
 </div>
 </div>
 
@@ -422,8 +372,8 @@ function openProduct(name,desc,img){
 document.getElementById("popup").style.display="flex";
 
 document.getElementById("pTitle").innerText=name;
-
 document.getElementById("pDesc").innerText=desc;
+document.getElementById("pImg").src=img;
 
 }
 

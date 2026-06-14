@@ -1,236 +1,637 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+
 <meta charset="UTF-8">
-<title>Lynaro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Lynaro — Беспроводные наушники</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
 
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-  background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
-  color:white;
+
+*{
+box-sizing:border-box;
 }
 
-/* ====== ТОВАРЫ ====== */
-#products{
-  display:flex;
-  gap:20px;
-  padding:30px;
-  overflow-x:auto;
+  <div class="popup-bg" id="popup">
+  <div class="popup">
+    <div class="close" onclick="closePopup()">✖</div>
+
+    <img id="p-img">
+    <h2 id="p-title"></h2>
+    <p id="p-desc"></p>
+    <ul id="p-spec"></ul>
+
+  </div>
+</div>
+
+
+body{
+
+margin:0;
+font-family:'Inter',sans-serif;
+background:
+linear-gradient(135deg,#050505,#161616,#292929);
+color:white;
+
 }
+
+
+header{
+
+height:90px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 8%;
+
+background:#0008;
+backdrop-filter:blur(15px);
+
+}
+
+
+.logo{
+
+font-size:32px;
+font-weight:800;
+letter-spacing:2px;
+
+}
+
+
+nav a{
+
+color:white;
+text-decoration:none;
+margin-left:25px;
+
+}
+
+
+
+.hero{
+
+min-height:70vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:40px;
+
+
+}
+
+
+.hero h1{
+
+font-size:70px;
+margin:0;
+
+background:linear-gradient(90deg,#fff,#d6a45d);
+-webkit-background-clip:text;
+color:transparent;
+
+}
+
+
+.hero p{
+
+font-size:22px;
+color:#bbb;
+
+}
+
+
+
+.btn{
+
+display:inline-block;
+margin-top:25px;
+padding:15px 35px;
+border-radius:40px;
+
+background:linear-gradient(90deg,#d6a45d,#ffdc8a);
+
+color:black;
+font-weight:700;
+text-decoration:none;
+
+}
+
+
+
+.products{
+
+padding:70px 8%;
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:30px;
+
+
+}
+
+
 
 .card{
-  flex:0 0 auto;
-  width:280px;
-  background:#111;
-  border-radius:18px;
-  padding:15px;
-  transition:0.2s;
+
+background:#ffffff10;
+border-radius:30px;
+padding:25px;
+
+backdrop-filter:blur(20px);
+
+transition:.3s;
+
 }
+
+
 
 .card:hover{
-  transform:scale(1.05);
+
+transform:translateY(-10px);
+
 }
+
+
 
 .card img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  border-radius:12px;
+
+width:100%;
+border-radius:20px;
+
 }
+
+
 
 .card h2{
-  font-size:18px;
-  margin:10px 0 5px;
+
+font-size:28px;
+
 }
 
-.card p{
-  color:#aaa;
+
+
+.card button{
+
+border:none;
+padding:12px 25px;
+border-radius:25px;
+
+background:white;
+cursor:pointer;
+
 }
 
-button{
-  padding:10px;
-  width:100%;
-  border:none;
-  border-radius:10px;
-  background:#ff3b7b;
-  color:white;
-  cursor:pointer;
+
+
+.info{
+
+display:none;
+
+padding:60px 8%;
+
 }
 
-/* ===== POPUP ===== */
+
+
+.info.active{
+
+display:block;
+
+}
+
+
+
+.spec{
+
+margin:15px 0;
+padding:20px;
+
+background:#ffffff12;
+border-radius:20px;
+
+}
+
+
+
+.contacts{
+
+padding:80px 8%;
+background:#0008;
+
+}
+
+
+.contact-btn{
+
+display:inline-block;
+margin:10px;
+padding:15px 30px;
+
+border-radius:30px;
+
+background:#222;
+color:white;
+text-decoration:none;
+
+}
+
+
+
+footer{
+
+text-align:center;
+padding:30px;
+color:#aaa;
+
+}
+
+  /* ===== POPUP ===== */
+
 .popup-bg{
-  position:fixed;
-  top:0;left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.8);
-  display:none;
-  align-items:center;
-  justify-content:center;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
 }
 
 .popup{
-  background:#111;
-  padding:20px;
-  border-radius:15px;
-  width:320px;
-  position:relative;
+width:90%;
+max-width:500px;
+background:#111;
+border-radius:25px;
+padding:25px;
+position:relative;
+animation:pop .25s ease;
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+
+@keyframes pop{
+from{transform:scale(0.8);opacity:0;}
+to{transform:scale(1);opacity:1;}
 }
 
 .popup img{
-  width:100%;
-  border-radius:10px;
+width:100%;
+border-radius:15px;
+margin-bottom:15px;
+}
+
+.popup h2{
+margin:10px 0;
+}
+
+.popup ul{
+padding-left:20px;
+color:#ccc;
 }
 
 .close{
-  position:absolute;
-  top:10px;
-  right:15px;
-  cursor:pointer;
+position:absolute;
+top:10px;
+right:15px;
+cursor:pointer;
+font-size:22px;
 }
+
+
 </style>
+
+
 </head>
+
+
 
 <body>
 
-<h1 style="text-align:center;padding:20px;">Lynaro</h1>
 
-<!-- ===== ТОВАРЫ ===== -->
-<section id="products">
+<header>
 
-<div class="card">
-<img src="slim1.jpg">
-<h2>Lynaro Slim</h2>
-<p>300₽</p>
-<button onclick="show('slim')">Узнать больше</button>
-</div>
+<div class="logo">Lynaro</div>
 
-<div class="card">
-<img src="seriesx1.jpg">
-<h2>Lynaro Series X</h2>
-<p>700₽</p>
-<button onclick="show('x')">Узнать больше</button>
-</div>
+<nav>
 
-<div class="card">
-<img src="seriesxs1.jpg">
-<h2>Lynaro Series XS</h2>
-<p>500₽</p>
-<button onclick="show('xs')">Узнать больше</button>
-</div>
+<a href="#products">Модели</a>
+<a href="#contacts">Контакты</a>
 
-<div class="card">
-<img src="clips1.jpg">
-<h2>Lynaro Clips</h2>
-<p>600₽</p>
-<button onclick="show('clips')">Узнать больше</button>
-</div>
+</nav>
 
-<div class="card">
-<img src="clipsfly1.jpg">
-<h2>Lynaro Clips Fly</h2>
-<p>900₽</p>
-<button onclick="show('fly')">Узнать больше</button>
-</div>
+</header>
 
-<div class="card">
-<img src="vip1.jpg">
-<h2>Lynaro VIP</h2>
-<p>1200₽</p>
-<button onclick="show('vip')">Узнать больше</button>
+
+
+<section class="hero">
+
+<div>
+
+<h1>Lynaro</h1>
+
+<p>
+Технологии звука в каждом моменте
+</p>
+
+<a class="btn" href="#products">
+Выбрать модель
+</a>
+
 </div>
 
 </section>
 
-<!-- ===== POPUP ===== -->
-<div class="popup-bg" id="popup">
-<div class="popup">
-<div class="close" onclick="closePopup()">✖</div>
 
-<img id="p-img">
-<h2 id="p-title"></h2>
-<p id="p-price"></p>
-<ul id="p-spec"></ul>
+
+<section id="products" class="products">
+
+
+
+<div class="card">
+
+<img src="slim1.jpg">
+
+<h2>Lynaro Slim</h2>
+
+<p>Доступная модель на каждый день</p>
+
+<button onclick="show('slim')">
+Подробнее
+</button>
 
 </div>
+
+
+
+
+<div class="card">
+
+<img src="seriesx1.jpg">
+
+<h2>Lynaro Series X</h2>
+
+<p>Больше возможностей и мощнее звук</p>
+
+<button onclick="show('x')">
+Подробнее
+</button>
+
 </div>
+
+
+
+
+<div class="card">
+
+<img src="seriesxs1.jpg">
+
+<h2>Lynaro Series XS</h2>
+
+<p>Версия Series X в более доступном формате</p>
+
+<button onclick="show('xs')">
+Подробнее
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<img src="clips1.jpg">
+
+<h2>Lynaro Clips</h2>
+
+<p>Комфорт нового формата</p>
+
+<button onclick="show('clips')">
+Подробнее
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<img src="clipsfly1.jpg">
+
+<h2>Lynaro Clips Fly</h2>
+
+<p>Стиль и премиальность</p>
+
+<button onclick="show('fly')">
+Подробнее
+</button>
+
+</div>
+
+
+
+
+<div class="card">
+
+<img src="vip1.jpg">
+
+<h2>Lynaro VIP</h2>
+
+<p>Флагманская серия</p>
+
+<button onclick="show('vip')">
+Подробнее
+</button>
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+<section id="info" class="info">
+
+
+<h1 id="title"></h1>
+
+<div class="spec" id="text"></div>
+
+
+<a class="btn" href="https://t.me/">
+Связаться в Telegram
+</a>
+
+<a class="btn" href="#">
+Связаться VK
+</a>
+
+
+<a class="btn" href="#">
+Связаться MAX
+</a>
+
+
+</section>
+
+
+
+
+
+
+<section id="contacts" class="contacts">
+
+
+<h1>Контакты</h1>
+
+
+<p>
+Почта:
+<br>
+<b>lynaroask@gmail.com</b>
+</p>
+
+
+
+<a class="contact-btn" href="#">
+VK
+</a>
+
+
+<a class="contact-btn" href="#">
+MAX
+</a>
+
+
+<a class="contact-btn" href="https://t.me/">
+Telegram
+</a>
+
+
+</section>
+
+
+
+<footer>
+
+© Lynaro 2026
+
+</footer>
+
+
+
 
 <script>
 
 function show(type){
 
-const data = {
+const data={
 
 slim:{
 title:"Lynaro Slim",
 img:"slim1.jpg",
-price:"300₽",
-spec:["Микрофон","USB-C + 3.5mm"]
+desc:"Базовая модель для повседневного использования.",
+spec:[
+"Проводное подключение",
+"Лёгкий корпус",
+"Чистый звук"
+]
 },
 
 x:{
 title:"Lynaro Series X",
 img:"seriesx1.jpg",
-price:"700₽",
-spec:["Bluetooth 5.3","Глубокие басы","Стабильное соединение"]
+desc:"Улучшенный звук и стабильное соединение.",
+spec:[
+"Bluetooth 5.3",
+"Глубокие басы",
+"20 часов работы"
+]
 },
 
 xs:{
 title:"Lynaro Series XS",
 img:"seriesxs1.jpg",
-price:"500₽",
-spec:["Bluetooth 5.3","Компактный дизайн","Баланс звука"]
+desc:"Доступная версия с сохранением качества.",
+spec:[
+"Bluetooth 5.3",
+"Компактный размер",
+"Стабильное соединение"
+]
 },
 
 clips:{
 title:"Lynaro Clips",
 img:"clips1.jpg",
-price:"600₽",
-spec:["Открытая посадка","Лёгкие","Комфорт"]
+desc:"Формат клипсы для максимального комфорта.",
+spec:[
+"Лёгкая посадка",
+"Открытый дизайн",
+"Удобно на каждый день"
+]
 },
 
 fly:{
 title:"Lynaro Clips Fly",
 img:"clipsfly1.jpg",
-price:"900₽",
-spec:["Премиум звук","Улучшенная фиксация","Стиль"]
+desc:"Премиальный комфорт и лёгкость.",
+spec:[
+"Улучшенный звук",
+"Эргономика",
+"Стильный корпус"
+]
 },
 
 vip:{
 title:"Lynaro VIP",
 img:"vip1.jpg",
-price:"1200₽",
-spec:["Hi-Fi звук","Шумоподавление","Влагозащита"]
+desc:"Флагманская модель Lynaro.",
+spec:[
+"Hi-Fi звук",
+"Шумоподавление",
+"Премиальные материалы"
+]
 }
 
 };
 
-const item = data[type];
+const item=data[type];
 
-document.getElementById("p-img").src = item.img;
-document.getElementById("p-title").innerText = item.title;
-document.getElementById("p-price").innerText = item.price;
+document.getElementById("p-img").src=item.img;
+document.getElementById("p-title").innerText=item.title;
+document.getElementById("p-desc").innerText=item.desc;
 
-const list = document.getElementById("p-spec");
-list.innerHTML = "";
-
+const list=document.getElementById("p-spec");
+list.innerHTML="";
 item.spec.forEach(i=>{
-let li = document.createElement("li");
-li.innerText = i;
+const li=document.createElement("li");
+li.innerText=i;
 list.appendChild(li);
 });
 
-document.getElementById("popup").style.display = "flex";
+document.getElementById("popup").style.display="flex";
 
 }
 
 function closePopup(){
-document.getElementById("popup").style.display = "none";
+document.getElementById("popup").style.display="none";
 }
 
 </script>
+
+
 
 </body>
 </html>

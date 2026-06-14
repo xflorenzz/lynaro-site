@@ -135,60 +135,6 @@ gap:30px;
 
 }
 
-
-
-.card{
-
-background:#ffffff10;
-border-radius:30px;
-padding:25px;
-
-backdrop-filter:blur(20px);
-
-transition:.3s;
-
-}
-
-
-
-.card:hover{
-
-transform:translateY(-10px);
-
-}
-
-
-
-.card img{
-
-width:100%;
-border-radius:20px;
-
-}
-
-
-
-.card h2{
-
-font-size:28px;
-
-}
-
-
-
-.card button{
-
-border:none;
-padding:12px 25px;
-border-radius:25px;
-
-background:white;
-cursor:pointer;
-
-}
-
-
-
 .info{
 
 display:none;
@@ -342,32 +288,21 @@ font-size:22px;
   font-size:20px;
 }
 
-  .card{
-  width:220px;
-  padding:15px;
-}
-
-.card img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-  border-radius:12px;
-}
-
-#products{
+  #products{
   display:flex;
-  flex-wrap:nowrap;
   gap:20px;
-  overflow-x:auto;
   padding:20px;
+  overflow-x:auto;
+  scroll-snap-type:x mandatory;
 }
 
 .card{
   flex:0 0 auto;
-  width:260px;
+  width:280px;
   background:#111;
   border-radius:18px;
   padding:15px;
+  scroll-snap-align:center;
 }
 
 .card img{
@@ -376,8 +311,9 @@ font-size:22px;
   object-fit:cover;
   border-radius:12px;
 }
+
 .card h2{
-  font-size:16px;
+  font-size:18px;
   margin:10px 0 5px;
 }
 

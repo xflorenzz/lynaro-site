@@ -3,28 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Lynaro</title>
 
 <style>
 
-/* ===== BACKGROUND ===== */
+/* ===== BASE ===== */
+html{
+scroll-behavior:smooth;
+}
+
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:linear-gradient(135deg,#0a0a0a,#1a1a1a);
+background:linear-gradient(135deg,#0a0a0a,#000000,#1a1a1a);
 color:white;
 }
 
 /* ===== HEADER ===== */
 header{
+height:70vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 text-align:center;
-padding:40px 20px;
+position:relative;
 }
 
 header h1{
 color:white;
-font-size:40px;
+font-size:55px;
 margin:0;
 }
 
@@ -34,38 +42,78 @@ margin-top:10px;
 }
 
 header button{
-margin-top:20px;
-padding:12px 20px;
-border-radius:20px;
+margin-top:70px;
+padding:14px 25px;
+border-radius:25px;
 border:1px solid #d4af37;
 background:transparent;
 color:white;
 cursor:pointer;
+transition:0.3s;
 }
 
-/* ===== PRODUCTS GRID ===== */
+header button:hover{
+background:#d4af37;
+color:black;
+}
+
+/* ===== CONTACT BUTTON ===== */
+.contact-float{
+position:fixed;
+top:20px;
+right:20px;
+padding:10px 15px;
+border-radius:20px;
+border:1px solid #d4af37;
+background:rgba(0,0,0,0.6);
+cursor:pointer;
+z-index:10;
+}
+
+/* ===== PRODUCTS ===== */
 .products{
+padding:80px 50px;
 display:grid;
-grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:25px;
-padding:50px;
 }
 
 /* ===== CARD ===== */
 .card{
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(212,175,37,0.4);
-border-radius:20px;
+border-radius:25px;
 padding:20px;
 display:flex;
 flex-direction:column;
 gap:10px;
 transition:0.3s;
 cursor:pointer;
+position:relative;
+overflow:hidden;
 }
 
 .card:hover{
-transform:translateY(-5px);
+transform:translateY(-8px);
+}
+
+/* GOLD SHINE */
+.card::before{
+content:"";
+position:absolute;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:linear-gradient(120deg,transparent,rgba(212,175,55,0.2),transparent);
+transform:rotate(25deg);
+transition:0.5s;
+opacity:0;
+}
+
+.card:hover::before{
+opacity:1;
+left:100%;
 }
 
 /* IMAGE */
@@ -76,25 +124,45 @@ object-fit:cover;
 border-radius:15px;
 }
 
+/* TITLE */
+.card h2{
+color:white;
+}
+
 /* PRICE */
 .price{
-color:#d4af37;
+background:linear-gradient(90deg,#d4af37,#fff1a8,#b8860b);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 font-weight:bold;
+}
+
+/* BADGES */
+.badge{
+position:absolute;
+top:10px;
+left:10px;
+background:#d4af37;
+color:black;
+padding:5px 10px;
+border-radius:10px;
+font-size:12px;
 }
 
 /* BUTTONS */
 .buttons{
 display:flex;
 gap:10px;
-margin-top:10px;
+margin-top:12px;
 }
 
 .buttons button{
 flex:1;
 padding:12px 0;
-border-radius:15px;
+border-radius:16px;
 border:none;
 cursor:pointer;
+transition:0.3s;
 }
 
 /* MORE */
@@ -116,53 +184,24 @@ color:black;
 font-weight:bold;
 }
 
-/* ===== CONTACTS ===== */
-.contacts{
+/* CONTACTS */
+#contacts{
+padding:60px;
 text-align:center;
-padding:40px;
-opacity:0.8;
 }
 
-.contacts a{
-color:#d4af37;
+#contacts a{
 display:block;
-margin:5px 0;
+color:#d4af37;
 text-decoration:none;
+margin:8px 0;
 }
 
-/* ===== POPUP ===== */
-.popup{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.8);
-display:none;
-justify-content:center;
-align-items:center;
-}
-
-.popup-content{
-background:#111;
-padding:20px;
-border-radius:20px;
-width:300px;
+/* FOOTER */
+footer{
 text-align:center;
-}
-
-.popup img{
-width:100%;
-border-radius:15px;
-margin-bottom:10px;
-}
-
-.close{
-position:absolute;
-top:20px;
-right:20px;
-font-size:30px;
-cursor:pointer;
+padding:30px;
+opacity:0.6;
 }
 
 </style>
@@ -170,30 +209,92 @@ cursor:pointer;
 
 <body>
 
+<button class="contact-float" onclick="document.getElementById('contacts').scrollIntoView({behavior:'smooth'})">
+Контакты
+</button>
+
 <header>
 <h1>Lynaro</h1>
 <p>Premium Audio Collection</p>
-<button onclick="scrollToProducts()">Выбрать модель</button>
+
+<button onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">
+Выбрать модель
+</button>
 </header>
 
 <div class="products" id="products">
 
-<!-- CARD -->
-<div class="card" onclick="openProduct('Slim')">
+<!-- SLIM -->
+<div class="card" onclick="openProduct('Slim','300₽','slim1.jpg','Базовая модель Slim')">
 <img src="slim1.jpg">
+<div class="badge">—</div>
 <h2>Slim</h2>
 <div class="price">300₽</div>
 
 <div class="buttons">
-<button class="more-btn" onclick="openProduct('Slim')">Подробнее</button>
+<button class="more-btn">Подробнее</button>
 <button class="buy-btn">Купить</button>
 </div>
 </div>
 
-<div class="card" onclick="openProduct('Series X')">
+<!-- SERIES X -->
+<div class="card" onclick="openProduct('Series X','700₽','slim1.jpg','Популярная модель')">
 <img src="slim1.jpg">
+<div class="badge">Popular</div>
 <h2>Series X</h2>
 <div class="price">700₽</div>
+
+<div class="buttons">
+<button class="more-btn">Подробнее</button>
+<button class="buy-btn">Купить</button>
+</div>
+</div>
+
+<!-- XS -->
+<div class="card" onclick="openProduct('Series XS','900₽','slim1.jpg','Новинка с улучшенным звуком')">
+<img src="slim1.jpg">
+<div class="badge">New</div>
+<h2>Series XS</h2>
+<div class="price">900₽</div>
+
+<div class="buttons">
+<button class="more-btn">Подробнее</button>
+<button class="buy-btn">Купить</button>
+</div>
+</div>
+
+<!-- CLIPS -->
+<div class="card" onclick="openProduct('Clips','500₽','slim1.jpg','Хит продаж')">
+<img src="slim1.jpg">
+<div class="badge">Hit</div>
+<h2>Clips</h2>
+<div class="price">500₽</div>
+
+<div class="buttons">
+<button class="more-btn">Подробнее</button>
+<button class="buy-btn">Купить</button>
+</div>
+</div>
+
+<!-- CLIPS FLY -->
+<div class="card" onclick="openProduct('Clips Fly','650₽','slim1.jpg','Новая версия Clips')">
+<img src="slim1.jpg">
+<div class="badge">New</div>
+<h2>Clips Fly</h2>
+<div class="price">650₽</div>
+
+<div class="buttons">
+<button class="more-btn">Подробнее</button>
+<button class="buy-btn">Купить</button>
+</div>
+</div>
+
+<!-- VIP -->
+<div class="card" onclick="openProduct('VIP','1500₽','slim1.jpg','Премиум сегмент')">
+<img src="slim1.jpg">
+<div class="badge">Best</div>
+<h2>VIP</h2>
+<div class="price">1500₽</div>
 
 <div class="buttons">
 <button class="more-btn">Подробнее</button>
@@ -204,37 +305,39 @@ cursor:pointer;
 </div>
 
 <!-- CONTACTS -->
-<div class="contacts">
-<h3>Контакты</h3>
+<div id="contacts">
+<h2>Контакты</h2>
 <a href="mailto:lynaroask@gmail.com">lynaroask@gmail.com</a>
 <a href="#">VK</a>
 <a href="#">MAX</a>
 <a href="#">Telegram</a>
 </div>
 
+<footer>
+Lynaro ®
+</footer>
+
 <!-- POPUP -->
-<div class="popup" id="popup">
-<div class="popup-content">
-<span class="close" onclick="closeProduct()">×</span>
-<img src="slim1.jpg" id="popupImg">
-<h2 id="popupTitle"></h2>
-<p>Характеристики появятся тут</p>
+<div id="popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;">
+<div style="background:#111;padding:20px;border-radius:20px;width:300px;text-align:center;position:relative;">
+<span onclick="closeProduct()" style="position:absolute;top:10px;right:15px;cursor:pointer;font-size:25px;">×</span>
+<img id="popImg" style="width:100%;border-radius:15px;">
+<h2 id="popTitle"></h2>
+<p id="popDesc"></p>
 </div>
 </div>
 
 <script>
 
-function openProduct(name){
+function openProduct(name,price,img,desc){
 document.getElementById('popup').style.display='flex';
-document.getElementById('popupTitle').innerText=name;
+document.getElementById('popTitle').innerText=name+" — "+price;
+document.getElementById('popImg').src=img;
+document.getElementById('popDesc').innerText=desc;
 }
 
 function closeProduct(){
 document.getElementById('popup').style.display='none';
-}
-
-function scrollToProducts(){
-document.getElementById('products').scrollIntoView({behavior:'smooth'});
 }
 
 </script>

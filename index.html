@@ -297,11 +297,7 @@ opacity:0.6;
 </div>
 
 <!-- VIP -->
-<div class="card"
-data-name="VIP"
-data-price="1500₽"
-data-img="vip1.jpg"
-data-desc="Премиум сегмент">
+<div class="card" onclick="openProduct('VIP','1500₽','vip1.jpg','Премиум сегмент')">
 <img src="vip1.jpg">
 <div class="badge">Best</div>
 <h2>VIP</h2>
@@ -309,10 +305,7 @@ data-desc="Премиум сегмент">
 
 <div class="buttons">
 <button class="more-btn">Подробнее</button>
-<button class="buy-btn"
-onclick="window.open('https://t.me/lynarostore','_blank')">
-Купить
-</button>
+<button class="buy-btn">Купить</button>
 </div>
 </div>
 
@@ -341,7 +334,6 @@ Lynaro ®
 </div>
 </div>
 
-
 <script>
 
 function openProduct(name,price,img,desc){
@@ -354,24 +346,3 @@ document.getElementById('popDesc').innerText=desc;
 function closeProduct(){
 document.getElementById('popup').style.display='none';
 }
-
-document.querySelectorAll('.card').forEach(card => {
-card.addEventListener('click', function(e) {
-
-if (e.target.closest('.buy-btn')) return;
-if (e.target.closest('.more-btn')) return;
-
-openProduct(
-this.dataset.name,
-this.dataset.price,
-this.dataset.img,
-this.dataset.desc
-);
-
-});
-});
-
-</script>
-
-</body>
-</html>

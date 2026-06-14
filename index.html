@@ -5,10 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lynaro — Беспроводные наушники</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-
+<title>Lynaro</title>
 
 <style>
 
@@ -16,235 +13,126 @@
 box-sizing:border-box;
 }
 
-
 body{
-
 margin:0;
-font-family:'Inter',sans-serif;
-background:
-linear-gradient(135deg,#050505,#161616,#292929);
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#080808,#222);
 color:white;
-
 }
 
 
 header{
-
-height:90px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:0 8%;
-
-background:#0008;
-backdrop-filter:blur(15px);
-
-}
-
-
-.logo{
-
-font-size:32px;
-font-weight:800;
-letter-spacing:2px;
-
-}
-
-
-nav a{
-
-color:white;
-text-decoration:none;
-margin-left:25px;
-
-}
-
-
-
-.hero{
-
-min-height:70vh;
-display:flex;
-align-items:center;
-justify-content:center;
 text-align:center;
 padding:40px;
-
-
 }
 
-
-.hero h1{
-
-font-size:70px;
+header h1{
+font-size:45px;
 margin:0;
-
-background:linear-gradient(90deg,#fff,#d6a45d);
--webkit-background-clip:text;
-color:transparent;
-
 }
 
 
-.hero p{
-
-font-size:22px;
-color:#bbb;
-
+header p{
+color:#aaa;
 }
-
-
-
-.btn{
-
-display:inline-block;
-margin-top:25px;
-padding:15px 35px;
-border-radius:40px;
-
-background:linear-gradient(90deg,#d6a45d,#ffdc8a);
-
-color:black;
-font-weight:700;
-text-decoration:none;
-
-}
-
 
 
 .products{
 
-padding:70px 8%;
-
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:30px;
-
+display:flex;
+gap:25px;
+padding:30px;
+overflow-x:auto;
 
 }
-
 
 
 .card{
 
-background:#ffffff10;
-border-radius:30px;
-padding:25px;
-
-backdrop-filter:blur(20px);
-
-transition:.3s;
+min-width:260px;
+background:rgba(255,255,255,0.08);
+border-radius:25px;
+padding:20px;
+backdrop-filter:blur(10px);
 
 }
-
-
-
-.card:hover{
-
-transform:translateY(-10px);
-
-}
-
 
 
 .card img{
 
 width:100%;
+height:220px;
+object-fit:cover;
 border-radius:20px;
 
 }
 
 
-
 .card h2{
+font-size:24px;
+}
 
-font-size:28px;
+
+.price{
+
+font-size:25px;
+font-weight:bold;
+color:#a970ff;
 
 }
 
 
+button{
 
-.card button{
-
-border:none;
-padding:12px 25px;
-border-radius:25px;
-
-background:white;
+width:100%;
+padding:13px;
+border:0;
+border-radius:15px;
+background:linear-gradient(135deg,#7b4dff,#d05cff);
+color:white;
 cursor:pointer;
+font-size:16px;
 
 }
-
 
 
 .info{
 
 display:none;
-
-padding:60px 8%;
-
-}
-
-
-
-.info.active{
-
-display:block;
+margin-top:15px;
+background:#111;
+padding:15px;
+border-radius:15px;
 
 }
-
-
-
-.spec{
-
-margin:15px 0;
-padding:20px;
-
-background:#ffffff12;
-border-radius:20px;
-
-}
-
 
 
 .contacts{
 
-padding:80px 8%;
-background:#0008;
+margin:40px;
+padding:30px;
+background:rgba(255,255,255,0.08);
+border-radius:25px;
 
 }
 
 
-.contact-btn{
+.contact{
 
 display:inline-block;
 margin:10px;
-padding:15px 30px;
-
-border-radius:30px;
-
-background:#222;
+padding:12px 25px;
+border-radius:15px;
+background:#7b4dff;
 color:white;
 text-decoration:none;
-
-}
-
-
-
-footer{
-
-text-align:center;
-padding:30px;
-color:#aaa;
 
 }
 
 
 </style>
 
-
 </head>
-
 
 
 <body>
@@ -252,54 +140,42 @@ color:#aaa;
 
 <header>
 
-<div class="logo">Lynaro</div>
+<h1>Lynaro</h1>
 
-<nav>
-
-<a href="#products">Модели</a>
-<a href="#contacts">Контакты</a>
-
-</nav>
+<p>Аксессуары нового уровня</p>
 
 </header>
 
 
 
-<section class="hero">
-
-<div>
-
-<h1>Lynaro</h1>
-
-<p>
-Технологии звука в каждом моменте
-</p>
-
-<a class="btn" href="#products">
-Выбрать модель
-</a>
-
-</div>
-
-</section>
-
-
-
-<section id="products" class="products">
+<div class="products">
 
 
 
 <div class="card">
 
-<img src="slim1.jpg">
+<img src="slim.jpg">
 
 <h2>Lynaro Slim</h2>
 
-<p>Доступная модель на каждый день</p>
+<div class="price">300₽</div>
 
-<button onclick="show('slim')">
-Подробнее
+<button onclick="openInfo('slim')">
+Узнать больше
 </button>
+
+<div class="info" id="slim">
+
+<ul>
+
+<li>Микрофон</li>
+<li>USB-C + 3.5MM</li>
+<li>Bluetooth 5.3</li>
+<li>Чистый звук</li>
+
+</ul>
+
+</div>
 
 </div>
 
@@ -308,161 +184,120 @@ color:#aaa;
 
 <div class="card">
 
-<img src="seriesx1.jpg">
+<img src="seriesx.jpg">
 
 <h2>Lynaro Series X</h2>
 
-<p>Больше возможностей и мощнее звук</p>
+<div class="price">700₽</div>
 
-<button onclick="show('x')">
-Подробнее
+<button onclick="openInfo('x')">
+Узнать больше
 </button>
+
+<div class="info" id="x">
+
+<ul>
+
+<li>Bluetooth 5.3</li>
+<li>Глубокие басы</li>
+<li>Стабильное соединение</li>
+
+</ul>
+
+</div>
 
 </div>
 
 
 
 
+
 <div class="card">
 
-<img src="seriesxs1.jpg">
+<img src="seriesxs.jpg">
 
 <h2>Lynaro Series XS</h2>
 
-<p>Версия Series X в более доступном формате</p>
+<div class="price">500₽</div>
 
-<button onclick="show('xs')">
-Подробнее
+<button onclick="openInfo('xs')">
+Узнать больше
 </button>
+
+<div class="info" id="xs">
+
+<ul>
+
+<li>Компактный дизайн</li>
+<li>Bluetooth 5.3</li>
+<li>Комфорт</li>
+
+</ul>
+
+</div>
 
 </div>
 
 
 
 
-<div class="card">
-
-<img src="clips1.jpg">
-
-<h2>Lynaro Clips</h2>
-
-<p>Комфорт нового формата</p>
-
-<button onclick="show('clips')">
-Подробнее
-</button>
-
-</div>
-
-
 
 
 <div class="card">
 
-<img src="fly1.jpg">
-
-<h2>Lynaro Clips Fly</h2>
-
-<p>Стиль и премиальность</p>
-
-<button onclick="show('fly')">
-Подробнее
-</button>
-
-</div>
-
-
-
-
-<div class="card">
-
-<img src="vip1.jpg">
+<img src="vip.jpg">
 
 <h2>Lynaro VIP</h2>
 
-<p>Флагманская серия</p>
+<div class="price">1200₽</div>
 
-<button onclick="show('vip')">
-Подробнее
+<button onclick="openInfo('vip')">
+Узнать больше
 </button>
+
+<div class="info" id="vip">
+
+<ul>
+
+<li>Премиальный звук</li>
+<li>Шумоподавление</li>
+<li>Влагозащита</li>
+
+</ul>
+
+</div>
 
 </div>
 
 
 
-</section>
+</div>
 
 
 
 
 
-<section id="info" class="info">
+<div class="contacts">
 
-
-<h1 id="title"></h1>
-
-<div class="spec" id="text"></div>
-
-
-<a class="btn" href="https://t.me/">
-Связаться в Telegram
-</a>
-
-<a class="btn" href="#">
-Связаться VK
-</a>
-
-
-<a class="btn" href="#">
-Связаться MAX
-</a>
-
-
-</section>
-
-
-
-
-
-
-<section id="contacts" class="contacts">
-
-
-<h1>Контакты</h1>
-
+<h2>Контакты</h2>
 
 <p>
-Почта:
-<br>
-<b>lynaroask@gmail.com</b>
+Почта: lynaroask@gmail.com
 </p>
 
 
-
-<a class="contact-btn" href="#">
+<a class="contact" href="#">
 VK
 </a>
 
 
-<a class="contact-btn" href="#">
+<a class="contact" href="#">
 MAX
 </a>
 
 
-<a class="contact-btn" href="https://t.me/">
-Telegram
-</a>
+</div>
 
-
-</section>
-
-
-
-<footer>
-
-© Lynaro 2026
-
-</footer>
 
 
 
@@ -470,73 +305,34 @@ Telegram
 <script>
 
 
-function show(type){
+function openInfo(id){
+
+let box=document.getElementById(id);
 
 
-let title=document.getElementById("title");
-let text=document.getElementById("text");
-let info=document.getElementById("info");
+if(box.style.display==="block"){
 
+box.style.display="none";
 
-let data={
+}
 
+else{
 
-slim:[
-"Lynaro Slim",
-"Компактные проводные наушники. Лёгкость, удобство и стабильный звук."
-],
+box.style.display="block";
 
-
-x:[
-"Lynaro Series X",
-"Bluetooth 5.3, улучшенный звук, автономность и стильный корпус."
-],
-
-
-xs:[
-"Lynaro Series XS",
-"Доступная версия Series X с сохранением фирменного дизайна."
-],
-
-
-clips:[
-"Lynaro Clips",
-"Наушники с клипсой. Комфортная посадка и современный дизайн."
-],
-
-
-fly:[
-"Lynaro Clips Fly",
-"Премиальный дизайн, лёгкость и максимальный комфорт."
-],
-
-
-vip:[
-"Lynaro VIP",
-"Флагманская серия Lynaro. Максимальное качество и премиальные материалы."
-]
-
-
-};
-
-
-title.innerHTML=data[type][0];
-
-text.innerHTML=data[type][1];
-
-info.classList.add("active");
-
-window.scrollTo({
-top:info.offsetTop,
-behavior:"smooth"
-});
+}
 
 
 }
 
 
+
 </script>
 
+
+
+</body>
+</html>
 
 
 </body>

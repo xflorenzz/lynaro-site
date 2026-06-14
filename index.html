@@ -305,7 +305,9 @@ opacity:0.6;
 
 <div class="buttons">
 <button class="more-btn">Подробнее</button>
-<button class="buy-btn" onclick="event.stopPropagation(); window.open('https://t.me/lynarostore','_blank')">
+<button 
+class="buy-btn"
+onclick="buy(event)">
 Купить
 </button>
 </div>
@@ -347,6 +349,17 @@ document.getElementById('popDesc').innerText=desc;
 
 function closeProduct(){
 document.getElementById('popup').style.display='none';
+}
+
+function buy(event){
+
+event.stopPropagation();
+
+window.open(
+"https://t.me/lynarostore",
+"_blank"
+);
+
 }
 
 </script>

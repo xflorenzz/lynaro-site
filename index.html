@@ -16,18 +16,6 @@
 box-sizing:border-box;
 }
 
-  <div class="popup-bg" id="popup">
-  <div class="popup">
-    <div class="close" onclick="closePopup()">✖</div>
-
-    <img id="p-img">
-    <h2 id="p-title"></h2>
-    <p id="p-desc"></p>
-    <ul id="p-spec"></ul>
-
-  </div>
-</div>
-
 
 body{
 
@@ -251,60 +239,6 @@ color:#aaa;
 
 }
 
-  /* ===== POPUP ===== */
-
-.popup-bg{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.7);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:999;
-}
-
-.popup{
-width:90%;
-max-width:500px;
-background:#111;
-border-radius:25px;
-padding:25px;
-position:relative;
-animation:pop .25s ease;
-box-shadow:0 20px 60px rgba(0,0,0,0.6);
-}
-
-@keyframes pop{
-from{transform:scale(0.8);opacity:0;}
-to{transform:scale(1);opacity:1;}
-}
-
-.popup img{
-width:100%;
-border-radius:15px;
-margin-bottom:15px;
-}
-
-.popup h2{
-margin:10px 0;
-}
-
-.popup ul{
-padding-left:20px;
-color:#ccc;
-}
-
-.close{
-position:absolute;
-top:10px;
-right:15px;
-cursor:pointer;
-font-size:22px;
-}
-
 
 </style>
 
@@ -425,7 +359,7 @@ font-size:22px;
 
 <div class="card">
 
-<img src="clipsfly1.jpg">
+<img src="fly1.jpg">
 
 <h2>Lynaro Clips Fly</h2>
 
@@ -535,99 +469,71 @@ Telegram
 
 <script>
 
+
 function show(type){
 
-const data={
 
-slim:{
-title:"Lynaro Slim",
-img:"slim1.jpg",
-desc:"Базовая модель для повседневного использования.",
-spec:[
-"Проводное подключение",
-"Лёгкий корпус",
-"Чистый звук"
-]
-},
+let title=document.getElementById("title");
+let text=document.getElementById("text");
+let info=document.getElementById("info");
 
-x:{
-title:"Lynaro Series X",
-img:"seriesx1.jpg",
-desc:"Улучшенный звук и стабильное соединение.",
-spec:[
-"Bluetooth 5.3",
-"Глубокие басы",
-"20 часов работы"
-]
-},
 
-xs:{
-title:"Lynaro Series XS",
-img:"seriesxs1.jpg",
-desc:"Доступная версия с сохранением качества.",
-spec:[
-"Bluetooth 5.3",
-"Компактный размер",
-"Стабильное соединение"
-]
-},
+let data={
 
-clips:{
-title:"Lynaro Clips",
-img:"clips1.jpg",
-desc:"Формат клипсы для максимального комфорта.",
-spec:[
-"Лёгкая посадка",
-"Открытый дизайн",
-"Удобно на каждый день"
-]
-},
 
-fly:{
-title:"Lynaro Clips Fly",
-img:"clipsfly1.jpg",
-desc:"Премиальный комфорт и лёгкость.",
-spec:[
-"Улучшенный звук",
-"Эргономика",
-"Стильный корпус"
-]
-},
+slim:[
+"Lynaro Slim",
+"Компактные проводные наушники. Лёгкость, удобство и стабильный звук."
+],
 
-vip:{
-title:"Lynaro VIP",
-img:"vip1.jpg",
-desc:"Флагманская модель Lynaro.",
-spec:[
-"Hi-Fi звук",
-"Шумоподавление",
-"Премиальные материалы"
+
+x:[
+"Lynaro Series X",
+"Bluetooth 5.3, улучшенный звук, автономность и стильный корпус."
+],
+
+
+xs:[
+"Lynaro Series XS",
+"Доступная версия Series X с сохранением фирменного дизайна."
+],
+
+
+clips:[
+"Lynaro Clips",
+"Наушники с клипсой. Комфортная посадка и современный дизайн."
+],
+
+
+fly:[
+"Lynaro Clips Fly",
+"Премиальный дизайн, лёгкость и максимальный комфорт."
+],
+
+
+vip:[
+"Lynaro VIP",
+"Флагманская серия Lynaro. Максимальное качество и премиальные материалы."
 ]
-}
+
 
 };
 
-const item=data[type];
 
-document.getElementById("p-img").src=item.img;
-document.getElementById("p-title").innerText=item.title;
-document.getElementById("p-desc").innerText=item.desc;
+title.innerHTML=data[type][0];
 
-const list=document.getElementById("p-spec");
-list.innerHTML="";
-item.spec.forEach(i=>{
-const li=document.createElement("li");
-li.innerText=i;
-list.appendChild(li);
+text.innerHTML=data[type][1];
+
+info.classList.add("active");
+
+window.scrollTo({
+top:info.offsetTop,
+behavior:"smooth"
 });
 
-document.getElementById("popup").style.display="flex";
 
 }
 
-function closePopup(){
-document.getElementById("popup").style.display="none";
-}
 
 </script>
 

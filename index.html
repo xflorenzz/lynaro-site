@@ -13,6 +13,27 @@
 box-sizing:border-box;
 }
 
+  <div class="popup" id="popup">
+
+<div class="popup-box">
+
+<span onclick="closePopup()">✖</span>
+
+<img id="popup-img">
+
+
+<h2 id="popup-title"></h2>
+
+<h3 id="popup-price"></h3>
+
+
+<ul id="popup-info"></ul>
+
+
+</div>
+
+</div>
+
 body{
 margin:0;
 font-family:'Segoe UI',Arial,sans-serif;
@@ -206,6 +227,106 @@ font-weight:bold;
 
 }
 
+header button{
+
+width:auto;
+padding:15px 35px;
+margin-top:20px;
+
+background:#d4af37;
+color:black;
+
+font-weight:bold;
+font-size:18px;
+
+}
+
+
+header button:hover{
+
+transform:scale(1.05);
+
+}
+
+  .popup{
+
+display:none;
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(0,0,0,.8);
+
+justify-content:center;
+align-items:center;
+
+z-index:100;
+
+}
+
+
+.popup-box{
+
+background:#111;
+
+border:1px solid #d4af37;
+
+border-radius:25px;
+
+padding:25px;
+
+width:330px;
+
+text-align:center;
+
+position:relative;
+
+animation:show .25s;
+
+}
+
+
+.popup-box img{
+
+width:100%;
+border-radius:20px;
+
+}
+
+
+.popup-box span{
+
+position:absolute;
+
+right:15px;
+top:10px;
+
+cursor:pointer;
+
+color:#d4af37;
+
+}
+
+
+@keyframes show{
+
+from{
+transform:scale(.8);
+opacity:0;
+}
+
+to{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
 
 
 </style>
@@ -221,7 +342,13 @@ font-weight:bold;
 
 <h1>LYNARO</h1>
 
-<p>Качественные аксессуары каждый день</p>
+<p>Технологии звука в каждом моменте</p>
+
+
+<button onclick="document.getElementById('products').scrollIntoView()">
+Выбрать модель
+</button>
+
 
 </header>
 
@@ -239,7 +366,7 @@ font-weight:bold;
 
 <div class="price">300₽</div>
 
-<button onclick="show('slim')">
+<button onclick="openProduct('slim')">
 Узнать больше
 </button>
 
@@ -269,7 +396,7 @@ font-weight:bold;
 
 <div class="price">700₽</div>
 
-<button onclick="show('x')">
+<button onclick="openProduct('x')">
 Узнать больше
 </button>
 
@@ -300,7 +427,7 @@ font-weight:bold;
 
 <div class="price">500₽</div>
 
-<button onclick="show('xs')">
+<button onclick="openProduct('xs')">
 Узнать больше
 </button>
 
@@ -333,7 +460,7 @@ font-weight:bold;
 <div class="price">600₽</div>
 
 
-<button onclick="show('clips')">
+<button onclick="openProduct('clips')">
 Узнать больше
 </button>
 
@@ -369,7 +496,7 @@ font-weight:bold;
 <div class="price">900₽</div>
 
 
-<button onclick="show('fly')">
+<button onclick="openProduct('fly')">
 Узнать больше
 </button>
 
@@ -406,7 +533,7 @@ font-weight:bold;
 <div class="price">1200₽</div>
 
 
-<button onclick="show('vip')">
+<button onclick="openProduct('vip')">
 Узнать больше
 </button>
 
@@ -456,6 +583,9 @@ VK
 MAX
 </a>
 
+  <a class="contact-btn" href="#">
+Telegram
+</a>
 
 
 </div>
@@ -466,25 +596,100 @@ MAX
 
 <script>
 
-
-function show(id){
-
-let box=document.getElementById(id);
+let products={
 
 
-if(box.style.display==="block"){
+slim:{
+title:"Lynaro Slim",
+img:"slim.jpg",
+price:"300₽",
+info:["Микрофон","USB-C + 3.5MM","Bluetooth 5.3"]
+},
 
-box.style.display="none";
 
-}else{
+x:{
+title:"Lynaro Series X",
+img:"seriesx.jpg",
+price:"700₽",
+info:["Bluetooth 5.3","Глубокие басы"]
+},
 
-box.style.display="block";
+
+xs:{
+title:"Lynaro Series XS",
+img:"seriesxs.jpg",
+price:"500₽",
+info:["Компактность","Чистый звук"]
+},
+
+
+clips:{
+title:"Lynaro Clips",
+img:"clips.jpg",
+price:"600₽",
+info:["Лёгкость","Удобная фиксация"]
+},
+
+
+fly:{
+title:"Lynaro Clips Fly",
+img:"clipsfly.jpg",
+price:"900₽",
+info:["Bluetooth 5.3","Стерео звук"]
+},
+
+
+vip:{
+title:"Lynaro VIP",
+img:"vip.jpg",
+price:"1200₽",
+info:["Премиальный звук","Влагозащита"]
+}
+
+
+};
+
+
+
+function openProduct(id){
+
+let p=products[id];
+
+
+document.getElementById("popup-img").src=p.img;
+
+document.getElementById("popup-title").innerText=p.title;
+
+document.getElementById("popup-price").innerText=p.price;
+
+
+let list=document.getElementById("popup-info");
+
+list.innerHTML="";
+
+
+p.info.forEach(x=>{
+
+let li=document.createElement("li");
+
+li.innerText=x;
+
+list.appendChild(li);
+
+});
+
+
+document.getElementById("popup").style.display="flex";
+
 
 }
 
 
-}
+function closePopup(){
 
+document.getElementById("popup").style.display="none";
+
+}
 
 
 </script>

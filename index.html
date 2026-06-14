@@ -8,7 +8,6 @@
 
 <style>
 
-/* ====== GLOBAL ====== */
 html{
 scroll-behavior:smooth;
 }
@@ -16,11 +15,13 @@ scroll-behavior:smooth;
 body{
 margin:0;
 font-family:Arial, sans-serif;
-background:linear-gradient(135deg,#050505,#0a0a0a,#1a1405);
+
+/* более золотой, но с черным */
+background:linear-gradient(135deg,#050505,#1a1205,#3a2a08);
 color:white;
 }
 
-/* ====== HEADER ====== */
+/* HEADER */
 header{
 height:70vh;
 display:flex;
@@ -34,10 +35,8 @@ position:relative;
 header h1{
 font-size:60px;
 margin:0;
-color:white;
 letter-spacing:4px;
 
-/* металл + золото эффект */
 background:linear-gradient(90deg,#fff,#d4af37,#fff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -63,7 +62,7 @@ background:#d4af37;
 color:black;
 }
 
-/* ====== CONTACT BUTTON ====== */
+/* CONTACT BUTTON */
 .contact-btn{
 position:fixed;
 top:15px;
@@ -74,10 +73,9 @@ border-radius:12px;
 background:transparent;
 color:white;
 cursor:pointer;
-z-index:100;
 }
 
-/* ====== PRODUCTS ====== */
+/* PRODUCTS */
 .products{
 padding:50px;
 display:grid;
@@ -91,33 +89,15 @@ background:rgba(255,255,255,.06);
 border:1px solid rgba(212,175,55,.4);
 border-radius:20px;
 padding:15px;
-position:relative;
 cursor:pointer;
+position:relative;
 overflow:hidden;
 transition:.3s;
 }
 
 .card:hover{
 transform:translateY(-5px);
-box-shadow:0 0 25px rgba(212,175,55,.2);
-}
-
-/* золотой блик */
-.card::before{
-content:"";
-position:absolute;
-top:-100%;
-left:-100%;
-width:200%;
-height:200%;
-background:linear-gradient(120deg,transparent,rgba(255,255,255,.2),transparent);
-transform:rotate(25deg);
-transition:.6s;
-}
-
-.card:hover::before{
-top:100%;
-left:100%;
+box-shadow:0 0 25px rgba(212,175,55,.25);
 }
 
 .card img{
@@ -137,14 +117,14 @@ background:linear-gradient(90deg,#d4af37,#fff1a8,#b8860b);
 font-weight:bold;
 }
 
-/* BADGES */
+/* BADGE */
 .badge{
 position:absolute;
 top:10px;
 left:10px;
 background:#d4af37;
 color:black;
-padding:3px 8px;
+padding:4px 8px;
 border-radius:10px;
 font-size:12px;
 }
@@ -156,18 +136,14 @@ gap:10px;
 margin-top:12px;
 }
 
-.buttons button{
+.more-btn{
 flex:1;
 padding:10px;
 border-radius:12px;
-border:none;
-cursor:pointer;
-}
-
-.more-btn{
-background:transparent;
 border:1px solid #d4af37;
+background:transparent;
 color:white;
+cursor:pointer;
 }
 
 .more-btn:hover{
@@ -176,15 +152,18 @@ color:black;
 }
 
 .buy-btn{
+flex:1;
+padding:10px;
+border-radius:12px;
+border:none;
+cursor:pointer;
 background:linear-gradient(135deg,#d4af37,#fff1a8,#b8860b);
-color:black;
-font-weight:bold;
 }
 
-/* WHY BLOCK */
+/* WHY */
 .why{
 text-align:center;
-padding:60px 20px;
+padding:70px 20px;
 }
 
 .why-grid{
@@ -227,6 +206,49 @@ padding:20px;
 opacity:.6;
 }
 
+/* POPUP */
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.85);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+
+.popup-content{
+background:linear-gradient(145deg,#111,#1f1605);
+border:1px solid #d4af37;
+border-radius:20px;
+padding:20px;
+width:320px;
+text-align:left;
+animation:pop .25s ease;
+}
+
+.popup-content img{
+width:100%;
+border-radius:12px;
+margin-bottom:10px;
+}
+
+@keyframes pop{
+from{transform:scale(.8);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+
+.close{
+position:absolute;
+right:20px;
+top:15px;
+font-size:28px;
+cursor:pointer;
+}
+
 </style>
 </head>
 
@@ -248,6 +270,7 @@ opacity:.6;
 <!-- PRODUCTS -->
 <section class="products" id="products">
 
+<!-- SLIM -->
 <div class="card">
 <img src="slim1.jpg">
 <div class="badge">Slim</div>
@@ -255,11 +278,17 @@ opacity:.6;
 <div class="price">300₽</div>
 
 <div class="buttons">
-<button class="more-btn" onclick="alert('Slim характеристики')">Подробнее</button>
-<button class="buy-btn" onclick="window.open('https://t.me/lynarostore','_blank')">Купить</button>
+<button class="more-btn"
+onclick="openProduct('Slim','Легкие и удобные проводные наушники\n- Микрофон\n- Type-C + 3.5MM','slim.jpg')">
+Подробнее</button>
+
+<button class="buy-btn"
+onclick="window.open('https://t.me/lynarostore','_blank')">
+Купить</button>
 </div>
 </div>
 
+<!-- SERIES X -->
 <div class="card">
 <img src="seriesx1.jpg">
 <div class="badge">Popular</div>
@@ -267,11 +296,17 @@ opacity:.6;
 <div class="price">600₽</div>
 
 <div class="buttons">
-<button class="more-btn">Подробнее</button>
-<button class="buy-btn" onclick="window.open('https://t.me/lynarostore','_blank')">Купить</button>
+<button class="more-btn"
+onclick="openProduct('Series X','Стандартные беспроводные наушники\n- Bluetooth 5.3\n- До 24 часов работы\n- Сенсорное управление\n- Чистый стереозвук\n- Глубокие басы','x.jpg')">
+Подробнее</button>
+
+<button class="buy-btn"
+onclick="window.open('https://t.me/lynarostore','_blank')">
+Купить</button>
 </div>
 </div>
 
+<!-- SERIES XS -->
 <div class="card">
 <img src="seriesxs1.jpg">
 <div class="badge">New</div>
@@ -279,11 +314,17 @@ opacity:.6;
 <div class="price">800₽</div>
 
 <div class="buttons">
-<button class="more-btn">Подробнее</button>
-<button class="buy-btn" onclick="window.open('https://t.me/lynarostore','_blank')">Купить</button>
+<button class="more-btn"
+onclick="openProduct('Series XS','Бюджетная версия Series X\n- Bluetooth 5.3\n- До 24 часов\n- Сенсорное управление\n- Чистый звук','xs.jpg')">
+Подробнее</button>
+
+<button class="buy-btn"
+onclick="window.open('https://t.me/lynarostore','_blank')">
+Купить</button>
 </div>
 </div>
 
+<!-- CLIPS -->
 <div class="card">
 <img src="clips1.jpg">
 <div class="badge">Hit</div>
@@ -291,11 +332,17 @@ opacity:.6;
 <div class="price">900₽</div>
 
 <div class="buttons">
-<button class="more-btn">Подробнее</button>
-<button class="buy-btn" onclick="window.open('https://t.me/lynarostore','_blank')">Купить</button>
+<button class="more-btn"
+onclick="openProduct('Clips','Модные клипсы\n- Bluetooth 5.3\n- До 28 часов\n- IPX4\n- Комфортная клипса\n- Удобное ношение','clips.jpg')">
+Подробнее</button>
+
+<button class="buy-btn"
+onclick="window.open('https://t.me/lynarostore','_blank')">
+Купить</button>
 </div>
 </div>
 
+<!-- CLIPS FLY -->
 <div class="card">
 <img src="clipsfly1.jpg">
 <div class="badge">New</div>
@@ -303,11 +350,17 @@ opacity:.6;
 <div class="price">1100₽</div>
 
 <div class="buttons">
-<button class="more-btn">Подробнее</button>
-<button class="buy-btn" onclick="window.open('https://t.me/lynarostore','_blank')">Купить</button>
+<button class="more-btn"
+onclick="openProduct('Clips Fly','Стильные наушники с дизайном\n- Bluetooth 5.3\n- До 28 часов\n- IPX4\n- Комфортная клипса\n- Бабочка дизайн','fly.jpg')">
+Подробнее</button>
+
+<button class="buy-btn"
+onclick="window.open('https://t.me/lynarostore','_blank')">
+Купить</button>
 </div>
 </div>
 
+<!-- VIP -->
 <div class="card">
 <img src="vip1.jpg">
 <div class="badge">Best</div>
@@ -315,15 +368,20 @@ opacity:.6;
 <div class="price">1500₽</div>
 
 <div class="buttons">
-<button class="more-btn" onclick="alert('VIP премиум характеристики')">Подробнее</button>
-<button class="buy-btn" onclick="window.open('https://t.me/lynarostore','_blank')">Купить</button>
+<button class="more-btn"
+onclick="openProduct('VIP','Премиум звук\n- Hi-Fi Audio\n- ENC Noise Reduction\n- Bluetooth 5.3\n- До 30 часов\n- IPX5','vip.jpg')">
+Подробнее</button>
+
+<button class="buy-btn"
+onclick="window.open('https://t.me/lynarostore','_blank')">
+Купить</button>
 </div>
 </div>
 
 </section>
 
 <!-- WHY -->
-<section class="why" id="why">
+<section class="why">
 <h2>Почему Lynaro?</h2>
 
 <div class="why-grid">
@@ -338,7 +396,7 @@ opacity:.6;
 <section id="contacts">
 <h2>Контакты</h2>
 
-<a href="mailto:mail@lynaro.com">Email</a>
+<a href="mailto:lynaroask@gmail.com">lynaroask@gmail.com</a>
 <a href="https://vk.com/lynaroshop" target="_blank">VK</a>
 <a href="https://max.ru/lynaroshop" target="_blank">MAX</a>
 <a href="https://t.me/medialynaro" target="_blank">Telegram</a>
@@ -347,6 +405,29 @@ opacity:.6;
 <footer>
 Lynaro ®
 </footer>
+
+<!-- POPUP -->
+<div class="popup" id="popup" onclick="this.style.display='none'">
+<div class="popup-content">
+<span class="close">×</span>
+<h2 id="pTitle"></h2>
+<pre id="pDesc" style="white-space:pre-wrap;color:white;"></pre>
+</div>
+</div>
+
+<script>
+
+function openProduct(name,desc,img){
+
+document.getElementById("popup").style.display="flex";
+
+document.getElementById("pTitle").innerText=name;
+
+document.getElementById("pDesc").innerText=desc;
+
+}
+
+</script>
 
 </body>
 </html>

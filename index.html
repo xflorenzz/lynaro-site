@@ -23,7 +23,7 @@ linear-gradient(135deg,#050505,#1c1505);
 
 
 header{
-height:100vh;
+height:70vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -89,6 +89,11 @@ padding:20px;
 cursor:pointer;
 
 transition:.3s;
+
+position:relative;
+overflow:hidden;
+
+}
 
 }
 
@@ -279,6 +284,90 @@ color:black;
 
 }
 
+  .top-contact{
+
+position:fixed;
+
+top:25px;
+right:25px;
+
+padding:12px 25px;
+
+border-radius:25px;
+
+background:rgba(212,175,37,.15);
+
+border:1px solid #d4af37;
+
+color:white;
+
+cursor:pointer;
+
+backdrop-filter:blur(10px);
+
+z-index:20;
+
+}
+
+
+.top-contact:hover{
+
+background:#d4af37;
+
+color:black;
+
+}
+
+  footer{
+
+text-align:center;
+
+padding:30px;
+
+color:#777;
+
+font-size:14px;
+
+letter-spacing:3px;
+
+}
+
+  html{
+scroll-behavior:smooth;
+}
+
+  .card:before{
+
+content:"";
+
+position:absolute;
+
+top:-50%;
+left:-50%;
+
+width:200%;
+height:200%;
+
+background:linear-gradient(
+120deg,
+transparent,
+rgba(212,175,37,.15),
+transparent
+);
+
+transform:rotate(25deg);
+
+transition:.5s;
+
+}
+
+
+.card:hover:before{
+
+left:100%;
+
+}
+
 
 </style>
 
@@ -290,6 +379,13 @@ color:black;
 
 
 <header>
+
+  <div class="top-contact"
+onclick="document.querySelector('.contacts').scrollIntoView()">
+
+Контакты
+
+</div>
 
 
 <div class="logo">
@@ -621,6 +717,12 @@ document.getElementById("popup").style.display="none";
 
 
 </script>
+
+  <footer>
+
+Lynaro®
+
+</footer>
 
 
 </body>

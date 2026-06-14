@@ -368,6 +368,76 @@ left:100%;
 
 }
 
+  .subtitle{
+
+color:#aaa;
+
+font-size:16px;
+
+letter-spacing:3px;
+
+margin-top:10px;
+
+text-transform:uppercase;
+
+} 
+
+  .badge{
+
+position:absolute;
+
+top:15px;
+right:15px;
+
+background:#d4af37;
+
+color:black;
+
+padding:6px 15px;
+
+border-radius:20px;
+
+font-size:12px;
+
+font-weight:bold;
+
+}
+
+  .buttons{
+
+display:flex;
+
+gap:10px;
+
+margin-top:15px;
+
+}
+
+
+.buttons button{
+
+flex:1;
+
+}
+
+
+.buy-btn{
+
+background:#d4af37;
+
+color:black;
+
+border:none;
+
+}
+
+
+.buy-btn:hover{
+
+background:white;
+
+}
+
 
 </style>
 
@@ -394,7 +464,7 @@ LYNARO
 
 
 <div class="subtitle">
-Аксессуары нового уровня
+Технологии. Стиль. Звук.
 </div>
 
 
@@ -429,11 +499,18 @@ onclick="document.getElementById('products').scrollIntoView()">
 Подробнее
 </button>
 
+  <button class="buy-btn">
+Купить
+</button>
+
 </div>
 
 
 
 <div class="card" onclick="openProduct('x')">
+  <div class="badge">
+Popular
+</div>
 
 <img src="seriesx1.jpg">
 
@@ -445,12 +522,19 @@ onclick="document.getElementById('products').scrollIntoView()">
 Подробнее
 </button>
 
+  <button class="buy-btn">
+Купить
+</button>
+
 </div>
 
 
 
 
 <div class="card" onclick="openProduct('xs')">
+  <div class="badge">
+New
+</div>
 
 <img src="seriesxs1.jpg">
 
@@ -462,6 +546,10 @@ onclick="document.getElementById('products').scrollIntoView()">
 Подробнее
 </button>
 
+  <button class="buy-btn">
+Купить
+</button>
+
 </div>
 
 
@@ -469,6 +557,9 @@ onclick="document.getElementById('products').scrollIntoView()">
 
 
 <div class="card" onclick="openProduct('clips')">
+  <div class="badge">
+Hit
+</div>
 
 <img src="clips1.jpg">
 
@@ -480,6 +571,10 @@ onclick="document.getElementById('products').scrollIntoView()">
 Подробнее
 </button>
 
+  <button class="buy-btn">
+Купить
+</button>
+
 </div>
 
 
@@ -488,6 +583,9 @@ onclick="document.getElementById('products').scrollIntoView()">
 
 
 <div class="card" onclick="openProduct('fly')">
+  <div class="badge">
+New
+</div>
 
 <img src="clipsfly1.jpg">
 
@@ -499,6 +597,10 @@ onclick="document.getElementById('products').scrollIntoView()">
 Подробнее
 </button>
 
+  <button class="buy-btn">
+Купить
+</button>
+
 </div>
 
 
@@ -508,6 +610,9 @@ onclick="document.getElementById('products').scrollIntoView()">
 
 
 <div class="card" onclick="openProduct('vip')">
+  <div class="badge">
+Best
+</div>
 
 <img src="vip1.jpg">
 
@@ -517,6 +622,10 @@ onclick="document.getElementById('products').scrollIntoView()">
 
   <button class="more-btn">
 Подробнее
+</button>
+
+  <button class="buy-btn">
+Купить
 </button>
 
 </div>
